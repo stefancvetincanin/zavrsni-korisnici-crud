@@ -1,6 +1,7 @@
 Specifikacija:
 
 1. User display page:
+	- display user name, id, country, image
 	- pagination
 	- delete user
 	- sort users by ID or Name
@@ -12,12 +13,20 @@ Specifikacija:
 	- login returns auth token that must be sent in auth header with every user manipulation request
 	
 3. Create user:
+	- dynamically asign id
 	- first name
 	- last name
 	- email
 	- phone (with masking)
 	- date of birth (with calendar plugin)
+	- country
 	
 Bonus: Grid-based main layout
 Bonus: using SASS
-Bonus: packaging for old browsers
+Bonus: packaging for old browsers (should be handled automatically by react build, but check)
+
+Pitanja za damjana:
+- SASS kompilacija i koriscenje
+
+TODO: dodati ID
+TODO: check when react updates elements and components
