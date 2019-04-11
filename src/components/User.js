@@ -18,7 +18,7 @@ export default class User extends Component {
         </p>
         <p>User Id: {this.props.user.userId}</p>
         <p>From: {this.capitalize(this.props.user.location.city)}, {this.capitalize(this.props.user.location.state)}</p>
-        <img src={this.props.user.picture.large} />
+        <img src={this.props.user.picture.large} alt="User"/>
       </div>
     )
   }

@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import React from 'react' // eslint-disable-next-line
+import { BrowserRouter as Route, Link } from 'react-router-dom'
 
 export default function Nav() {
   return (
