@@ -28,5 +28,4 @@ Bonus: packaging for old browsers (should be handled automatically by react buil
 Pitanja za damjana:
 - SASS kompilacija i koriscenje
 
-TODO: dodati ID
 TODO: check when react updates elements and components
