@@ -28,6 +28,7 @@ Bonus: packaging for old browsers (should be handled automatically by react buil
 Pitanja za damjana:
 - SASS kompilacija i koriscenje
 - prijavljuje da se route ne koristi, ali kad ga izbrisem ne radi
+- da li moze da se pokrene kao obicna stranica?
 
 TODO: lookup sorting from react-filmovi
 TODO: check when react updates elements and components
