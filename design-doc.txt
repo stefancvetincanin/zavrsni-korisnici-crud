@@ -1,0 +1,23 @@
+Specifikacija:
+
+1. User display page:
+	- pagination
+	- delete user
+	- sort users by ID or Name
+	- click on user opens edit user modal
+		Bonus: allow edit only to logged in users, otherwise just display
+		
+2. Login page:
+	- login with front-end validation
+	- login returns auth token that must be sent in auth header with every user manipulation request
+	
+3. Create user:
+	- first name
+	- last name
+	- email
+	- phone (with masking)
+	- date of birth (with calendar plugin)
+	
+Bonus: Grid-based main layout
+Bonus: using SASS
+Bonus: packaging for old browsers
