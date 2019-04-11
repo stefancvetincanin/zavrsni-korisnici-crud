@@ -12,6 +12,7 @@ export default class User extends Component {
   render() {
     return (
       <div>
+        <h1>Korisnik</h1>
         <p>
           {this.capitalize(this.props.user.name.first + " " + this.props.user.name.last)}
         </p>
