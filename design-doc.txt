@@ -4,9 +4,10 @@ Specifikacija:
 	- display user name, id, country, image
 	- pagination
 	- delete user
+	- search users by ID or Name
 	- sort users by ID or Name
 	- click on user opens edit user modal
-		Bonus: allow edit only to logged in users, otherwise just display
+			Bonus: allow edit only to logged in users, otherwise just display
 		
 2. Login page:
 	- login with front-end validation
@@ -29,6 +30,12 @@ Pitanja za damjana:
 - SASS kompilacija i koriscenje
 - prijavljuje da se route ne koristi, ali kad ga izbrisem ne radi
 - da li moze da se pokrene kao obicna stranica?
+- cemu sluzi componentDidMount?
+- modal
+- autentifikacija
+- odrzavanje stanja pri promeni stranice
+- aktivne klase u navigaciji
 
+TODO: NPM EJECT
 TODO: lookup sorting from react-filmovi
 TODO: check when react updates elements and components
