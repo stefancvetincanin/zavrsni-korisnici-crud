@@ -1,4 +1,4 @@
-Specifikacija:
+Requirements:
 
 1. User display page:
 	- display user name, id, country, image
@@ -8,6 +8,8 @@ Specifikacija:
 	- sort users by ID or Name
 	- click on user opens edit user modal
 			Bonus: allow edit only to logged in users, otherwise just display
+	Bonus: add the No users found notification when search yields no results
+	Bonus: sort and search work together
 		
 2. Login page:
 	- login with front-end validation
@@ -27,15 +29,14 @@ Bonus: using SASS
 Bonus: packaging for old browsers (should be handled automatically by react build, but check)
 
 Pitanja za damjana:
-- SASS kompilacija i koriscenje
-- prijavljuje da se route ne koristi, ali kad ga izbrisem ne radi
-- da li moze da se pokrene kao obicna stranica?
-- cemu sluzi componentDidMount?
 - modal
 - autentifikacija
-- odrzavanje stanja pri promeni stranice
 - aktivne klase u navigaciji
+- prijavljuje da se route ne koristi, ali kad ga izbrisem ne radi
+- cemu sluzi componentDidMount?
+- odrzavanje stanja pri promeni stranice
+- validator
 
 TODO: NPM EJECT
-TODO: lookup sorting from react-filmovi
 TODO: check when react updates elements and components
+TODO: srediti adrese za github pages

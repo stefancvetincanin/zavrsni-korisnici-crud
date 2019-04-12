@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import { capitalize } from '../utils/helpers'
 
 export default class User extends Component {
@@ -7,10 +6,15 @@ export default class User extends Component {
     display: true
   }
 
+  handleModal = () => {
+    // alert('radi' + this.props.user.userId)
+    this.props.onClickUser(this.props.user.userId)
+  }
+
   render() {
     return (
-      <div>
-        <h1>Korisnik</h1>
+      <div onClick={this.handleModal}>
+        <h3>Korisnik</h3>
         <p>
           {capitalize(this.props.user.name.first + " " + this.props.user.name.last)}
         </p>

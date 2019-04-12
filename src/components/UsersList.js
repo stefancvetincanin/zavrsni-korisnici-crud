@@ -1,68 +1,71 @@
 import React, { Component } from 'react'
 import usersBase from '../data/user-base.json'
 import User from './User'
+import Modal from './Modal'
 import { compareNameAsc, compareNameDsc, compareIdAsc, compareIdDsc } from '../utils/helpers'
 
 export default class UsersList extends Component {
   state = {
     users: usersBase.results,
-    usersBackup: usersBase.results,
-    filterID: null,
-    searchMode: 0
+    usersWorking: usersBase.results,
+    filterById: null,
+    searchMode: 0,
+    modalId: 0,
+    displayModal: false
   }
 
   sortNameAsc = () => {
     const sorted = this.state.users.sort(compareNameAsc)
     this.setState({
-      usersBackup: sorted
+      usersWorking: sorted
     })
   }
 
   sortNameDsc = () => {
     const sorted = this.state.users.sort(compareNameDsc)
     this.setState({
-      usersBackup: sorted
+      usersWorking: sorted
     })
   }
 
   sortIdAsc = () => {
     const sorted = this.state.users.sort(compareIdAsc)
     this.setState({
-      usersBackup: sorted
+      usersWorking: sorted
     })
   }
 
   sortIdDsc = () => {
     const sorted = this.state.users.sort(compareIdDsc)
     this.setState({
-      usersBackup: sorted
+      usersWorking: sorted
     })
   }
 
   inputFilter = (e) => {
     if (e.target.value === ''){
       this.setState({
-        usersBackup: this.state.users
+        usersWorking: this.state.users
       })
     } else {
       if(this.state.searchMode === 1) {
-        this.filterID = Number(e.target.value)
-        console.log(this.filterID)
+        this.filterById = Number(e.target.value)
+        console.log(this.filterById)
         console.log(e.target.value)
-        const sorted = this.state.users.filter(x => x.userId === this.filterID)
+        const sorted = this.state.users.filter(x => x.userId === this.filterById)
         this.setState({
-          usersBackup: sorted
+          usersWorking: sorted
         })
       } else {
-        this.filterID = e.target.value
-        let patt = new RegExp(this.filterID, 'i')
-        console.log(this.filterID)
+        this.filterById = e.target.value
+        let patt = new RegExp(this.filterById, 'i')
+        console.log(this.filterById)
         console.log(e.target.value)
         const sorted = this.state.users.filter(
           x => patt.test(x.name.first + ' ' + x.name.last)
         );
         this.setState({
-          usersBackup: sorted
+          usersWorking: sorted
         });
       }
     }
@@ -75,17 +78,46 @@ export default class UsersList extends Component {
     })    
   }
 
+  getModalId = (modalFromUser) => {
+    this.setState({
+      modalId: modalFromUser,
+      displayModal: true
+    })
+  }
+
   render() {
-    const displayUsers = this.state.usersBackup.map((x, i) => {
+    const displayUsers = this.state.usersWorking.map((x, i) => {
       return (
-        <User user={x} key={i}/>
+        <User user={x} key={i} onClickUser={this.getModalId}/>
       )
     })
 
+    if(this.state.displayModal) {
+      return (
+        <main>
+          <Modal user={this.state.usersWorking[this.state.modalId - 1]}/>
+          <h2>List of users</h2>
+          <input id="inputTest" onChange={this.inputFilter} type="text" placeholder="Search..." />
+          <select onChange={this.changeSearchMode}>
+            <option>Search by Name</option>
+            <option>Search by ID</option>
+          </select>
+          <br />
+          <button onClick={this.sortNameAsc}>Sort by name ascending</button>
+          <button onClick={this.sortNameDsc}>Sort by name descending</button>
+          <br />
+          <button onClick={this.sortIdAsc}>Sort by ID ascending</button>
+          <button onClick={this.sortIdDsc}>Sort by ID descending</button>
+          <div>
+            {displayUsers}
+          </div>
+        </main>
+      )
+    }
     return (
       <main>
         <h2>List of users</h2>
-        <input id="inputTest" onChange={this.inputFilter} type="text" placeholder="ID" />
+        <input id="inputTest" onChange={this.inputFilter} type="text" placeholder="Search..." />
         <select onChange={this.changeSearchMode}>
           <option>Search by Name</option>
           <option>Search by ID</option>
@@ -96,7 +128,9 @@ export default class UsersList extends Component {
         <br />
         <button onClick={this.sortIdAsc}>Sort by ID ascending</button>
         <button onClick={this.sortIdDsc}>Sort by ID descending</button>
-        <div>{displayUsers}</div>
+        <div>
+          {displayUsers}
+        </div>
       </main>
     );
 
