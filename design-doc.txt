@@ -7,9 +7,12 @@ Requirements:
 	- search users by ID or Name
 	- sort users by ID or Name
 	- click on user opens edit user modal
+			Bonus: edit/view switch dugme u modalu
 			Bonus: allow edit only to logged in users, otherwise just display
+	Bonus: keep the app state in localStorage
 	Bonus: add the No users found notification when search yields no results
-	Bonus: sort and search work together
+	Bonus: sort and search should work together
+	Bonus: search input should change type according to search parameters - by ID or name
 		
 2. Login page:
 	- login with front-end validation
@@ -28,8 +31,10 @@ Bonus: Grid-based main layout
 Bonus: using SASS
 Bonus: packaging for old browsers (should be handled automatically by react build, but check)
 
+TODO: srediti adrese za github pages
+TODO: check when react updates elements and components
+
 Pitanja za damjana:
-- modal
 - autentifikacija
 - aktivne klase u navigaciji
 - prijavljuje da se route ne koristi, ali kad ga izbrisem ne radi
@@ -37,6 +42,5 @@ Pitanja za damjana:
 - odrzavanje stanja pri promeni stranice
 - validator
 
-TODO: NPM EJECT
-TODO: check when react updates elements and components
-TODO: srediti adrese za github pages
+Maybes:
+- NPM EJECT

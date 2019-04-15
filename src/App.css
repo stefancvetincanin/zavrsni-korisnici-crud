@@ -35,6 +35,11 @@ footer {
   border: 1px solid black;
 }
 
+.user-info:hover {
+  background-color: beige;
+  cursor: pointer;
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1200px;

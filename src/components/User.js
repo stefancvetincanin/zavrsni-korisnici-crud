@@ -13,7 +13,7 @@ export default class User extends Component {
 
   render() {
     return (
-      <div onClick={this.handleModal}>
+      <div onClick={this.handleModal} className="user-info">
         <h3>Korisnik</h3>
         <p>
           {capitalize(this.props.user.name.first + " " + this.props.user.name.last)}

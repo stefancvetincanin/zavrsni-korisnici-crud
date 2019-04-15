@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import usersBase from '../data/user-base.json'
 import User from './User'
+import UsersNotFound from './UsersNotFound'
 import Modal from './Modal'
 import { compareNameAsc, compareNameDsc, compareIdAsc, compareIdDsc } from '../utils/helpers'
+
+// experimenting with localStorage
+if(localStorage.getItem("usersLocal") === undefined || localStorage.getItem("usersLocal") === null) {
+  localStorage.setItem("usersLocal", JSON.stringify(usersBase))
+}
 
 export default class UsersList extends Component {
   state = {
@@ -12,16 +18,21 @@ export default class UsersList extends Component {
     searchMode: 0,
     modalId: 0,
     displayModal: false,
-    userModal: usersBase.results[0]
+    userModal: {}
   }
 
+  // sort functions
+  sortIdDsc = () => {
+    const sorted = this.state.users.sort(compareIdDsc)
+    this.setState({
+      usersWorking: sorted
+    })
+  }
   sortNameAsc = () => {
     const sorted = this.state.users.sort(compareNameAsc)
     this.setState({
       usersWorking: sorted
     })
-    console.log(this.state.userModal);
-    
   }
 
   sortNameDsc = () => {
@@ -38,20 +49,14 @@ export default class UsersList extends Component {
     })
   }
 
-  sortIdDsc = () => {
-    const sorted = this.state.users.sort(compareIdDsc)
-    this.setState({
-      usersWorking: sorted
-    })
-  }
-
+  // search field functionality
   inputFilter = (e) => {
     if (e.target.value === ''){
       this.setState({
         usersWorking: this.state.users
       })
     } else {
-      if(this.state.searchMode === 1) {
+      if (this.state.searchMode === 1) {
         this.filterById = Number(e.target.value)
         console.log(this.filterById)
         console.log(e.target.value)
@@ -82,15 +87,17 @@ export default class UsersList extends Component {
   }
 
   getModalId = (modalFromUser) => {
-    let temp = []
-    for( let i = 0; i < this.state.users; i++) {
-      if(this.state.users[i].userId === modalFromUser)
-        temp = this.state.users[i]
-    }
-    // this.state.users.filter(x => x.userId === modalFromUser)
-    console.log(temp);
-    
+    let temp = {}
+    this.state.users.forEach(function (element) {
+      if(element.userId === modalFromUser)
+        temp = element
+    })
+    // for( let i = 0; i < this.state.users.length; i++) {
+    //   if(this.state.users[i].userId === modalFromUser)
+    //     temp = this.state.users[i]
+    // }
     this.setState({
+      userModal: temp,
       modalId: modalFromUser,
       displayModal: true
     })
@@ -113,11 +120,13 @@ export default class UsersList extends Component {
   }
 
   render() {
-    const displayUsers = this.state.usersWorking.map((x, i) => {
+    let displayUsers = this.state.usersWorking.map((x, i) => {
       return (
         <User user={x} key={i} onClickUser={this.getModalId}/>
       )
     })
+    if(displayUsers === undefined || displayUsers.length === 0)
+      displayUsers = <UsersNotFound />
 
     return (
       <main>
