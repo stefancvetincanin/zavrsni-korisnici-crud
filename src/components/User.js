@@ -14,13 +14,14 @@ export default class User extends Component {
   render() {
     return (
       <div onClick={this.handleModal} className="user-info">
-        <h3>Korisnik</h3>
-        <p>
+        <div>
+          <h3>
           {capitalize(this.props.user.name.first + " " + this.props.user.name.last)}
-        </p>
-        <p>User Id: {this.props.user.userId}</p>
-        <p>From: {capitalize(this.props.user.location.city)}, {capitalize(this.props.user.location.state)}</p>
-        <img src={this.props.user.picture.large} alt="User"/>
+          </h3>
+          <p>From: {capitalize(this.props.user.location.city)}, <br />{capitalize(this.props.user.location.state)}</p>
+          <p>User Id: {this.props.user.userId}</p>
+          <img src={this.props.user.picture.large} alt="User"/>
+        </div>
       </div>
     )
   }

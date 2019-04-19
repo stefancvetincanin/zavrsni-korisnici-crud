@@ -18,7 +18,8 @@ export default class UsersList extends Component {
     searchMode: 0,
     modalId: 0,
     displayModal: false,
-    userModal: {}
+    userModal: {},
+    inputType: 'text'
   }
 
   // sort functions
@@ -81,8 +82,14 @@ export default class UsersList extends Component {
 
   changeSearchMode = (e) => {
     document.getElementById("inputTest").value = ''
+    let tempInputType = ''
+    if(e.target.selectedIndex)
+      tempInputType = 'number'
+    else
+      tempInputType = 'text'
     this.setState({
-      searchMode: Number(e.target.selectedIndex)
+      searchMode: Number(e.target.selectedIndex),
+      inputType: tempInputType
     })    
   }
 
@@ -130,9 +137,19 @@ export default class UsersList extends Component {
 
     return (
       <main>
-        <Modal user={this.state.userModal} displayState={this.state.displayModal} onClickClose={this.closeModal} onClickDelete={this.deleteUser}/>
+        <Modal 
+          user={this.state.userModal} 
+          displayState={this.state.displayModal} 
+          onClickClose={this.closeModal} 
+          onClickDelete={this.deleteUser}
+        />
         <h2>List of users</h2>
-        <input id="inputTest" onChange={this.inputFilter} type="text" placeholder="Search..." />
+        <input 
+          id="inputTest" 
+          onChange={this.inputFilter} 
+          type={this.state.inputType} 
+          placeholder="Search..."
+        />
         <select onChange={this.changeSearchMode}> 
           <option>Search by Name</option>
           <option>Search by ID</option>
@@ -143,7 +160,7 @@ export default class UsersList extends Component {
         <br />
         <button onClick={this.sortIdAsc}>Sort by ID ascending</button>
         <button onClick={this.sortIdDsc}>Sort by ID descending</button>
-        <div>
+        <div className="users-list">
           {displayUsers}
         </div>
       </main>

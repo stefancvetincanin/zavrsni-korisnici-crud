@@ -3,6 +3,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -29,9 +30,25 @@ footer {
 }
 
 /* Users list */
+.users-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.user-info {
+  padding: 15px;
+}
+
 .user-info:hover {
   background-color: beige;
   cursor: pointer;
+  box-shadow: 4px 4px 2px whitesmoke;
+  
+}
+
+.user-info h3 {
+  margin: 5px 0;
 }
 
 /* Modal */
@@ -62,9 +79,29 @@ footer {
 }
 
 /* Responsive */
+@media (min-width: 768px) {
+  .users-list {
+    flex-direction: row;
+  }
+
+  .user-info {
+    flex-basis: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .user-info {
+    flex-basis: 33%;
+  }
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  .user-info {
+    flex-basis: 25%;
   }
 }
