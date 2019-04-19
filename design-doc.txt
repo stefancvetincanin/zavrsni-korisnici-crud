@@ -11,7 +11,7 @@ Requirements:
 			Bonus: allow edit only to logged in users, otherwise just display
 	Bonus: keep the app state in localStorage
 	Bonus: add the No users found notification when search yields no results
-	Bonus: sort and search should work together
+	Bonus: changing sorg should preserve search parameters
 	Bonus: search input should change type according to search parameters - by ID or name
 		
 2. Login page:

@@ -1,3 +1,4 @@
+/* Reset */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -9,6 +10,9 @@ body {
   padding: 0;
 }
 
+/* Header */
+
+/* Nav */
 nav > ul {
   list-style: none;
   padding: 0;
@@ -19,14 +23,22 @@ nav li {
   padding: 0;
 }
 
+/* Footer */
 footer {
   text-align: center;
 }
 
+/* Users list */
+.user-info:hover {
+  background-color: beige;
+  cursor: pointer;
+}
+
+/* Modal */
 .modal {
   position: fixed;
   height: 400px;
-  width: 400px;
+  width: 320px;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -35,11 +47,21 @@ footer {
   border: 1px solid black;
 }
 
-.user-info:hover {
-  background-color: beige;
+.modal-close {
   cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  line-height: 25px;
+  position: relative;
+  top: -30px;
+  float: right;
 }
 
+/* Responsive */
 @media (min-width: 1200px) {
   .container {
     max-width: 1200px;
