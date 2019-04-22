@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import usersBase from '../data/user-base.json'
 import User from './User'
 import UsersNotFound from './UsersNotFound'
@@ -10,7 +10,7 @@ if(localStorage.getItem("usersLocal") === undefined || localStorage.getItem("use
   localStorage.setItem("usersLocal", JSON.stringify(usersBase))
 }
 
-export default class UsersList extends Component {
+export default class UsersList extends React.Component {
   state = {
     users: usersBase.results,
     usersWorking: usersBase.results,
