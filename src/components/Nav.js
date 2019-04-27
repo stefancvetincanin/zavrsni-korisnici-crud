@@ -41,17 +41,23 @@ export default class Nav extends React.Component {
           <ul>
             <li>
               <Link to="/">
-                <div className="link-item" style={{backgroundColor: this.state.liActive1 && 'aquamarine'}} onClick={this.linkClick1}>Users list</div>
+                <div className="link-item" 
+                style={{backgroundColor: this.state.liActive1 && 'LightSeaGreen', textDecoration:  this.state.liActive1 && 'underline'}} 
+                onClick={this.linkClick1}>Users list</div>
               </Link>
             </li>
             <li>
-              <Link to="/login">
-                <div className="link-item" style={{backgroundColor: this.state.liActive2 && 'aquamarine'}} onClick={this.linkClick2}>Login</div>
+              <Link to="login">
+                <div className="link-item" 
+                  style={{backgroundColor: this.state.liActive2 && 'LightSeaGreen', textDecoration:  this.state.liActive2 && 'underline'}} 
+                  onClick={this.linkClick2}>Login</div>
               </Link>
             </li>
             <li>
-              <Link to="/register">
-                <div className="link-item" style={{backgroundColor: this.state.liActive3 && 'aquamarine'}} onClick={this.linkClick3}>Create User</div>
+              <Link to="register">
+                <div className="link-item" 
+                style={{backgroundColor: this.state.liActive3 && 'LightSeaGreen', textDecoration:  this.state.liActive3 && 'underline'}} 
+                onClick={this.linkClick3}>Create User</div>
               </Link>
             </li>
           </ul>

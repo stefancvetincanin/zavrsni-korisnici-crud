@@ -9,10 +9,10 @@ Requirements:
 	- click on user opens edit user modal
 			Bonus: edit/view switch dugme u modalu
 			Bonus: allow edit only to logged in users, otherwise just display
-	Bonus: keep the app state in localStorage
 	Bonus: add the No users found notification when search yields no results
 	Bonus: changing sorg should preserve search parameters
 	Bonus: search input should change type according to search parameters - by ID or name
+	MAYBE: keep the app state in localStorage
 		
 2. Login page:
 	- login with front-end validation

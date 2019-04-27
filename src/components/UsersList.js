@@ -50,6 +50,7 @@ export default class UsersList extends React.Component {
     })
   }
 
+  // Controlled inputs
   handleChange = (e) => {
     const { name, value } = e.target
     this.setState({
@@ -60,7 +61,7 @@ export default class UsersList extends React.Component {
   // Modal functionality
   getModalId = (modalFromUser) => {
     let temp = {}
-    this.state.users.forEach(function (element) {
+    this.state.users.forEach((element) => {
       if (element.userId === modalFromUser)
         temp = element
     })
@@ -77,16 +78,6 @@ export default class UsersList extends React.Component {
     })
   }
 
-  deleteUser = (userId) => {
-    alert("Korisnik sa ID: " + userId + " ce biti obrisan!")
-    let usersDelete =
-      this.state.users.filter(x => x.userId !== userId)
-    this.setState({
-      usersWorking: usersDelete,
-      users: usersDelete
-    })
-  }
-
   render() {
     // Search functionality and mapping components
     let displayUsers = []
@@ -96,19 +87,18 @@ export default class UsersList extends React.Component {
         .filter(x => (x.name.first + ' ' + x.name.last).match(pattern))
         .map((x, i) => {
           return (
-            <User user={x} key={i} onClickUser={this.getModalId} />
+            <User user={x} key={i} getModalId={this.getModalId} />
           )
         })
     } else {
       displayUsers = this.state.usersWorking
-        .filter(x => (String(x.userId)).match(pattern))
+        .filter(x => String(x.userId).match(pattern))
         .map((x, i) => {
           return (
-            <User user={x} key={i} onClickUser={this.getModalId} />
+            <User user={x} key={i} getModalId={this.getModalId} />
           )
         })
     }
-    
     if (displayUsers === undefined || displayUsers.length === 0)
       displayUsers = <UsersNotFound />
 
@@ -124,16 +114,16 @@ export default class UsersList extends React.Component {
       <main className="container">
         <Modal
           user={this.state.userModal}
-          displayState={this.state.displayModal}
-          onClickClose={this.closeModal}
-          onClickDelete={this.deleteUser}
+          displayModal={this.state.displayModal}
+          closeModal={this.closeModal}
+          deleteUser={this.props.deleteUser}
         />
         <h2>List of users</h2>
         <input
           type={this.state.searchType}
           name="searchField"
           onChange={this.handleChange}
-          placeholder={"Search..."}
+          placeholder={`Search by ${this.state.searchType === "text" ? "Last Name" : "User ID"}...`}
         />
         <select
           value={this.state.searchType}
