@@ -12,16 +12,36 @@ body {
 }
 
 /* Header */
+header {
+  background-image: linear-gradient(to right, rgb(80, 209, 209), rgb(101, 243, 248));
+  margin: 0;
+}
+
+h1 { margin: 0; }
 
 /* Nav */
+nav {
+  margin: 0;
+}
+
 nav > ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 nav li {
   margin: 0;
   padding: 0;
+  text-align: center;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.link-item {
+  padding: 5px 0;
 }
 
 /* Footer */
@@ -80,6 +100,17 @@ footer {
 
 /* Responsive */
 @media (min-width: 768px) {
+  /* Header and Nav */
+  nav ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  nav li {
+    width: 200px;
+  }
+
+  /* Users list */
   .users-list {
     flex-direction: row;
   }

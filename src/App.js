@@ -5,23 +5,27 @@ import Nav from './components/Nav'
 import UsersList from './components/UsersList'
 import Login from './components/Login'
 import CreateUser from './components/CreateUser'
-import Header from './components/Header'
 import Footer from './components/Footer'
 
 class App extends Component {
+  state = {
+    test: 'Hello React'
+  }
+
   render() {
     return (
-      <div className="container">
-        <Header />
+      <div>
         <Router>
           <Nav />
-          <Route path="/" exact component={UsersList}></Route>
+          <Route path='/' exact render={(props) => (
+              <UsersList {...props} data={this.state.test}/>
+            )}/>
           <Route path="/login" exact component={Login}></Route>
           <Route path="/register" exact component={CreateUser}></Route>
         </Router>
         <Footer />
       </div>
-    );
+    )
   }
 }
 

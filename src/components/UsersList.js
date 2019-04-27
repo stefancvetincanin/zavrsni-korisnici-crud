@@ -136,7 +136,7 @@ export default class UsersList extends React.Component {
       displayUsers = <UsersNotFound />
 
     return (
-      <main>
+      <main className="container">
         <Modal 
           user={this.state.userModal} 
           displayState={this.state.displayModal} 
