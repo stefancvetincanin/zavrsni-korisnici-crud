@@ -1,8 +1,8 @@
 # zavrsni-rad-korisnici
 
 A simple crud app for users with auth support.<br>
-Project will be done in some FE framework (ReactJS or VueJS).<br>
-It should be done as a SPA, so some routing library should be involved, for example for Vuejs should be Vue-router.<br>
+Project will be done in some FE framework (Reactjs or Vuejs).<br>
+It should be done as a SPA, so some routing library should be involved, for example for Vuejs should be Vue-router, or React Router for react.<br>
 It should contain at least 3 pages:  <br>
 <ol>
 <li>Login -- it should have a login with front end validation -- when user logs in (credentials doesn't matter) login will return access token that needs to be saved and sent as auth header with each request for user manipulation</li>

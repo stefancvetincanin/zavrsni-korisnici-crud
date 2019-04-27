@@ -1,108 +1,69 @@
 import React from 'react'
-import usersBase from '../data/user-base.json'
 import User from './User'
 import UsersNotFound from './UsersNotFound'
 import Modal from './Modal'
 import { compareNameAsc, compareNameDsc, compareIdAsc, compareIdDsc } from '../utils/helpers'
-
-// experimenting with localStorage
-if(localStorage.getItem("usersLocal") === undefined || localStorage.getItem("usersLocal") === null) {
-  localStorage.setItem("usersLocal", JSON.stringify(usersBase))
-}
+import Loader from '../images/loader.gif'
 
 export default class UsersList extends React.Component {
   state = {
-    users: usersBase.results,
-    usersWorking: usersBase.results,
-    filterById: null,
-    searchMode: 0,
+    users: this.props.users,
+    usersWorking: this.props.users,
+    searchField: '',
+    searchType: 'text',
     modalId: 0,
     displayModal: false,
     userModal: {},
     inputType: 'text'
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.users !== prevProps.users) {
+      this.setState({
+        users: this.props.users,
+        usersWorking: this.props.users
+      })
+    }
+  }
+
   // sort functions
   sortIdDsc = () => {
-    const sorted = this.state.users.sort(compareIdDsc)
     this.setState({
-      usersWorking: sorted
+      usersWorking: this.state.users.sort(compareIdDsc)
     })
   }
   sortNameAsc = () => {
-    const sorted = this.state.users.sort(compareNameAsc)
     this.setState({
-      usersWorking: sorted
+      usersWorking: this.state.users.sort(compareNameAsc)
     })
   }
 
   sortNameDsc = () => {
-    const sorted = this.state.users.sort(compareNameDsc)
     this.setState({
-      usersWorking: sorted
+      usersWorking: this.state.users.sort(compareNameDsc)
     })
   }
 
   sortIdAsc = () => {
-    const sorted = this.state.users.sort(compareIdAsc)
     this.setState({
-      usersWorking: sorted
+      usersWorking: this.state.users.sort(compareIdAsc)
     })
   }
 
-  // search field functionality
-  inputFilter = (e) => {
-    if (e.target.value === ''){
-      this.setState({
-        usersWorking: this.state.users
-      })
-    } else {
-      if (this.state.searchMode === 1) {
-        this.filterById = Number(e.target.value)
-        console.log(this.filterById)
-        console.log(e.target.value)
-        const sorted = this.state.users.filter(x => x.userId === this.filterById)
-        this.setState({
-          usersWorking: sorted
-        })
-      } else {
-        this.filterById = e.target.value
-        let patt = new RegExp(this.filterById, 'i')
-        console.log(this.filterById)
-        console.log(e.target.value)
-        const sorted = this.state.users.filter(
-          x => patt.test(x.name.first + ' ' + x.name.last)
-        );
-        this.setState({
-          usersWorking: sorted
-        });
-      }
-    }
-  }
-
-  changeSearchMode = (e) => {
-    document.getElementById("inputTest").value = ''
-    let tempInputType = ''
-    if(e.target.selectedIndex)
-      tempInputType = 'number'
-    else
-      tempInputType = 'text'
+  handleChange = (e) => {
+    const { name, value } = e.target
     this.setState({
-      searchMode: Number(e.target.selectedIndex),
-      inputType: tempInputType
-    })    
+      [name]: value
+    })
   }
 
+  // Modal functionality
   getModalId = (modalFromUser) => {
     let temp = {}
     this.state.users.forEach(function (element) {
-      if(element.userId === modalFromUser)
+      if (element.userId === modalFromUser)
         temp = element
     })
-    // for( let i = 0; i < this.state.users.length; i++) {
-    //   if(this.state.users[i].userId === modalFromUser)
-    //     temp = this.state.users[i]
-    // }
     this.setState({
       userModal: temp,
       modalId: modalFromUser,
@@ -118,7 +79,7 @@ export default class UsersList extends React.Component {
 
   deleteUser = (userId) => {
     alert("Korisnik sa ID: " + userId + " ce biti obrisan!")
-    let usersDelete = 
+    let usersDelete =
       this.state.users.filter(x => x.userId !== userId)
     this.setState({
       usersWorking: usersDelete,
@@ -127,32 +88,59 @@ export default class UsersList extends React.Component {
   }
 
   render() {
-    let displayUsers = this.state.usersWorking.map((x, i) => {
-      return (
-        <User user={x} key={i} onClickUser={this.getModalId}/>
-      )
-    })
-    if(displayUsers === undefined || displayUsers.length === 0)
+    // Search functionality and mapping components
+    let displayUsers = []
+    const pattern = new RegExp(this.state.searchField, "i")
+    if (this.state.searchType === 'text') {
+      displayUsers = this.state.usersWorking
+        .filter(x => (x.name.first + ' ' + x.name.last).match(pattern))
+        .map((x, i) => {
+          return (
+            <User user={x} key={i} onClickUser={this.getModalId} />
+          )
+        })
+    } else {
+      displayUsers = this.state.usersWorking
+        .filter(x => (String(x.userId)).match(pattern))
+        .map((x, i) => {
+          return (
+            <User user={x} key={i} onClickUser={this.getModalId} />
+          )
+        })
+    }
+    
+    if (displayUsers === undefined || displayUsers.length === 0)
       displayUsers = <UsersNotFound />
+
+    // Until the data is received from the API, display loader
+    if (this.props.isLoading)
+      return (
+        <main className="container loader">
+          <img src={Loader} alt="Loading data" width="50" />
+        </main>
+      )
 
     return (
       <main className="container">
-        <Modal 
-          user={this.state.userModal} 
-          displayState={this.state.displayModal} 
-          onClickClose={this.closeModal} 
+        <Modal
+          user={this.state.userModal}
+          displayState={this.state.displayModal}
+          onClickClose={this.closeModal}
           onClickDelete={this.deleteUser}
         />
         <h2>List of users</h2>
-        <input 
-          id="inputTest" 
-          onChange={this.inputFilter} 
-          type={this.state.inputType} 
-          placeholder="Search..."
+        <input
+          type={this.state.searchType}
+          name="searchField"
+          onChange={this.handleChange}
+          placeholder={"Search..."}
         />
-        <select onChange={this.changeSearchMode}> 
-          <option>Search by Name</option>
-          <option>Search by ID</option>
+        <select
+          value={this.state.searchType}
+          name="searchType"
+          onChange={this.handleChange}>
+          <option value="text">Search by Name</option>
+          <option value="number">Search by ID</option>
         </select>
         <br />
         <button onClick={this.sortNameAsc}>Sort by name ascending</button>

@@ -3,14 +3,14 @@ export function capitalize(ulaz) {
 }
 
 export function compareNameAsc(a, b) {
-  if (a.name.first.trim() < b.name.first.trim()) return -1
-  if (a.name.first.trim() > b.name.first.trim()) return 1
+  if (a.name.last.trim() < b.name.last.trim()) return -1
+  if (a.name.last.trim() > b.name.last.trim()) return 1
   else return 0
 }
 
 export function compareNameDsc(b, a) {
-  if (a.name.first.trim() < b.name.first.trim()) return -1
-  if (a.name.first.trim() > b.name.first.trim()) return 1
+  if (a.name.last.trim() < b.name.last.trim()) return -1
+  if (a.name.last.trim() > b.name.last.trim()) return 1
   else return 0
 }
 

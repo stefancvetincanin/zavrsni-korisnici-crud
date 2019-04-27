@@ -12,7 +12,6 @@ export default class Modal extends Component {
   }
 
   editMode = () => {
-    alert("radi edit mode")
     this.setState({
       editMode: true
     })
