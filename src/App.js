@@ -29,12 +29,10 @@ class App extends Component {
           users: data.results,
           isLoading: false
         })
-        console.log(data.results)
       })
   }
 
   deleteUser = (userId) => {
-    alert("Korisnik sa ID: " + userId + " ce biti obrisan!")
     this.setState(prevState => {
       return {
         users: prevState.users.filter(x => x.userId !== userId)
@@ -45,19 +43,19 @@ class App extends Component {
   createUser = (newUser) => {
     let temp = this.state.users
     temp.push(newUser)
-    console.log(temp)
     this.setState({
       users: temp
     })
+  }
 
-    // this.setState(prevState => {
-    //   return {
-    //     users: prevState.users.push(newUser)
-    //   }
-    // })
-
-    alert("usli smo u createUser funkciju")
-    // setTimeout(function(){ console.log(this.state.users)}, 2000)
+  getHighestId = () => {
+    let highestId = 0
+    this.state.users.forEach(element => {
+      if(element.userId > highestId)
+        highestId = element.userId
+    });
+    highestId++
+    return highestId
   }
 
   render() {
@@ -76,7 +74,7 @@ class App extends Component {
           <Route path="/login" exact component={Login}></Route>
           <Route path="/register" exact render={(props) => (
             <CreateUser {...props} 
-              usersLength={this.state.users.length}
+              usersLength={this.getHighestId()}
               isLoggedIn={this.state.isLoggedIn}
               authToken={this.state.authToken}
               createUser={this.createUser}

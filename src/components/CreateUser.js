@@ -37,7 +37,7 @@ export default class CreateUser extends React.Component {
         city: this.state.city.toLowerCase(),
         state: this.state.state.toLowerCase()
       },
-      userId: this.props.usersLength + 1,
+      userId: this.props.usersLength,
       picture: {
         large: this.state.imgUrl
       }
@@ -77,19 +77,21 @@ export default class CreateUser extends React.Component {
             <input type="checkbox" name="agreePrivacy" checked={this.state.agreePrivacy} onChange={this.handleChange} required/>
             Do you agree to our privacy policy?
           </label><br />
-          <h1>Submit crashes app</h1>
           <button>Submit user</button>
           <input type="reset" onClick={this.handleReset}/>
         </form>
-        <p>First: {this.state.first}</p>
-        <p>Last: {this.state.last}</p>
-        <p>email: {this.state.email}</p>
-        <p>phone: {this.state.phone}</p>
-        <p>date: {this.state.date}</p>
-        <p>city: {this.state.city}</p>
-        <p>state: {this.state.state}</p>
-        <p>Agree to privacy policy: {this.state.agreePrivacy ? "agreed" : "not agreed"}</p>
-        <img src={this.state.imgUrl}/>
+        <hr />
+        <small>
+          <p>First: {this.state.first}</p>
+          <p>Last: {this.state.last}</p>
+          <p>email: {this.state.email}</p>
+          <p>phone: {this.state.phone}</p>
+          <p>date: {this.state.date}</p>
+          <p>city: {this.state.city}</p>
+          <p>state: {this.state.state}</p>
+          <p>Agree to privacy policy: {this.state.agreePrivacy ? "agreed" : "not agreed"}</p>
+        </small>
+        <img src={this.state.imgUrl} alt=""/>
       </main>
     )
   }

@@ -9,6 +9,9 @@ export default class Modal extends Component {
   deleteById = () => {
     this.props.deleteUser(this.props.user.userId)
     this.props.closeModal()
+    this.setState({
+      editMode: false
+    })
   }
 
   editMode = () => {
