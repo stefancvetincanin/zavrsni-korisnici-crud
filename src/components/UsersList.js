@@ -4,6 +4,7 @@ import UsersNotFound from './UsersNotFound'
 import Modal from './Modal'
 import { compareNameAsc, compareNameDsc, compareIdAsc, compareIdDsc } from '../utils/helpers'
 import Loader from '../images/loader.gif'
+import Pagination from './Pagination'
 
 export default class UsersList extends React.Component {
   state = {
@@ -14,7 +15,9 @@ export default class UsersList extends React.Component {
     modalId: 0,
     displayModal: false,
     userModal: {},
-    inputType: 'text'
+    inputType: 'text',
+    usersPerPage: 10,
+    currentPage : 1
   }
 
   componentDidUpdate(prevProps) {
@@ -54,7 +57,8 @@ export default class UsersList extends React.Component {
   handleChange = (e) => {
     const { name, value } = e.target
     this.setState({
-      [name]: value
+      [name]: value,
+      currentPage: 1
     })
   }
 
@@ -78,12 +82,18 @@ export default class UsersList extends React.Component {
     })
   }
 
+  handlePageChange = page => {
+    this.setState({
+      currentPage: Number(page)
+    })
+  }
+
   render() {
     // Search functionality and mapping components
-    let displayUsers = []
+    let displayUsers = this.state.usersWorking
     const pattern = new RegExp(this.state.searchField, "i")
     if (this.state.searchType === 'text') {
-      displayUsers = this.state.usersWorking
+      displayUsers = displayUsers
         .filter(x => (x.name.first + ' ' + x.name.last).match(pattern))
         .map((x, i) => {
           return (
@@ -91,7 +101,7 @@ export default class UsersList extends React.Component {
           )
         })
     } else {
-      displayUsers = this.state.usersWorking
+      displayUsers = displayUsers
         .filter(x => String(x.userId).match(pattern))
         .map((x, i) => {
           return (
@@ -99,10 +109,15 @@ export default class UsersList extends React.Component {
           )
         })
     }
-    if (displayUsers === undefined || displayUsers.length === 0)
-      displayUsers = <UsersNotFound />
 
-    // Until the data is received from the API, display loader
+    let displayUsersPaginated = displayUsers.filter((element, index) => {
+      return index < this.state.currentPage * this.state.usersPerPage && index >= (this.state.currentPage * this.state.usersPerPage - this.state.usersPerPage)
+    })
+
+    if (displayUsersPaginated === undefined || displayUsersPaginated.length === 0)
+      displayUsersPaginated = <UsersNotFound />
+
+    // Display loader until the API responds
     if (this.props.isLoading)
       return (
         <main className="container loader">
@@ -133,14 +148,46 @@ export default class UsersList extends React.Component {
           <option value="number">Search by ID</option>
         </select>
         <br />
-        <button onClick={this.sortNameAsc}>Sort by name ascending</button>
-        <button onClick={this.sortNameDsc}>Sort by name descending</button>
+        <button onClick={this.sortNameAsc}>Last name - ascending</button>
+        <button onClick={this.sortNameDsc}>Last name - descending</button>
         <br />
-        <button onClick={this.sortIdAsc}>Sort by ID ascending</button>
-        <button onClick={this.sortIdDsc}>Sort by ID descending</button>
-        <div className="users-list">
-          {displayUsers}
+        <button onClick={this.sortIdAsc}>ID - ascending</button>
+        <button onClick={this.sortIdDsc}>ID - descending</button><br />
+        <select
+            name="usersPerPage"
+            value={this.state.usersPerPage}
+            onChange={this.handleChange}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select>
+        <div className="pagination-container" 
+          style={{display: (displayUsers.length <= this.state.usersPerPage) ? "none" : null}}>
+          <Pagination 
+            usersPerPage={this.state.usersPerPage}
+            totalUsers={displayUsers.length}
+            handlePageChange={this.handlePageChange}
+            currentPage={this.state.currentPage}/>
         </div>
+        <div className="users-list">
+          {displayUsersPaginated}
+        </div>
+        <div className="pagination-container"
+          style={{display: (displayUsers.length <= this.state.usersPerPage) ? "none" : null}}>
+          <Pagination 
+            usersPerPage={this.state.usersPerPage}
+            totalUsers={displayUsers.length}
+            handlePageChange={this.handlePageChange}
+            currentPage={this.state.currentPage}/>
+        </div>
+        <select
+          name="usersPerPage"
+          value={this.state.usersPerPage}
+          onChange={this.handleChange}>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
       </main>
     )
   }

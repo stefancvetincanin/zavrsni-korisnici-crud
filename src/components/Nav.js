@@ -8,6 +8,7 @@ export default class Nav extends React.Component {
     liActive3: false
   }
 
+  // This could use some reformatting (not a lot of work needed)
   linkClick1 = () => {
     this.setState({
       liActive1: true,
@@ -33,6 +34,7 @@ export default class Nav extends React.Component {
   }
 
   render() {
+    console.log()
     return (
       <div>
         <header>
@@ -42,22 +44,22 @@ export default class Nav extends React.Component {
             <li>
               <Link to="/">
                 <div className="link-item" 
-                style={{backgroundColor: this.state.liActive1 && 'LightSeaGreen', textDecoration:  this.state.liActive1 && 'underline'}} 
-                onClick={this.linkClick1}>Users list</div>
+                  style={{backgroundColor: this.props.linkActive===1 && 'LightSeaGreen', textDecoration: this.props.linkActive===1 && 'underline'}} 
+                  onClick={() => {this.props.changeLinkActive(1)}}>Users list</div>
               </Link>
             </li>
             <li>
               <Link to="login">
                 <div className="link-item" 
-                  style={{backgroundColor: this.state.liActive2 && 'LightSeaGreen', textDecoration:  this.state.liActive2 && 'underline'}} 
-                  onClick={this.linkClick2}>Login</div>
+                  style={{backgroundColor: this.props.linkActive===2 && 'LightSeaGreen', textDecoration: this.props.linkActive===2 && 'underline'}}
+                  onClick={() => {this.props.changeLinkActive(2)}}>Login</div>
               </Link>
             </li>
             <li>
               <Link to="register">
                 <div className="link-item" 
-                style={{backgroundColor: this.state.liActive3 && 'LightSeaGreen', textDecoration:  this.state.liActive3 && 'underline'}} 
-                onClick={this.linkClick3}>Create User</div>
+                  style={{backgroundColor: this.props.linkActive===3 && 'LightSeaGreen', textDecoration: this.props.linkActive===3 && 'underline'}}
+                  onClick={() => {this.props.changeLinkActive(3)}}>Create User</div>
               </Link>
             </li>
           </ul>

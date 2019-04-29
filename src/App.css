@@ -17,7 +17,9 @@ header {
   margin: 0;
 }
 
-h1 { margin: 0; }
+h1 { 
+  margin: 0;
+}
 
 /* Nav */
 nav {
@@ -98,6 +100,37 @@ input[type=text], input[type=number] {
 
 ::placeholder {
   color: rgb(75, 201, 201);
+}
+
+/* Users list pagination */
+.page-buttons-container {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.page-button {
+  display: inline-block;
+  text-align: center;
+  padding: 3px 8px;
+  border: 1px solid lightseagreen;
+  cursor: pointer;
+  user-select: none;
+}
+
+.page-button:hover {
+  background-color: rgb(191, 225, 247);
+  color: white;
+}
+
+.page-button:first-of-type {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.page-button:last-of-type {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 /* Modal */

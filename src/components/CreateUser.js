@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Route, Link } from 'react-router-dom' //eslint-disable-line
 
 export default class CreateUser extends React.Component {
   state = {
@@ -10,7 +11,8 @@ export default class CreateUser extends React.Component {
     city: '',
     state: '',
     agreePrivacy: false,
-    imgUrl: ''
+    imgUrl: '',
+    imgUrlCorrect: false
   }
 
   handleChange = (e) => {
@@ -22,7 +24,6 @@ export default class CreateUser extends React.Component {
 
   handleForm = (e) => {
     e.preventDefault()
-    alert("submitted")
     const newUser = {
       name: {
         first: this.state.first.toLowerCase(),
@@ -42,8 +43,12 @@ export default class CreateUser extends React.Component {
         large: this.state.imgUrl
       }
     }
-    console.log(newUser)
-    this.props.createUser(newUser)
+    if(this.state.imgUrlCorrect) {
+      this.props.createUser(newUser)
+      this.handleReset()
+      alert("Succesfully submited!")
+    } else
+      alert("The image url you entered failed to load. Please check your link and try again.")
   }
 
   handleReset = () => {
@@ -60,18 +65,32 @@ export default class CreateUser extends React.Component {
     })
   }
 
+  imageLoaded = () => {
+    this.setState({
+      imgUrlCorrect: true
+    })
+  }
+
+  imageError = () => {
+    this.setState({
+      imgUrlCorrect: false
+    })
+  }
+
   render() {
     return (
       <main className="container">
         <h2>Create User</h2>
-        <form onSubmit={this.handleForm}>
+        <form 
+          style={{display: !this.props.isLoggedIn && 'none'}}
+          onSubmit={this.handleForm}>
           <input type="text" placeholder="First Name" name="first" value={this.state.first} onChange={this.handleChange} required/><br />
           <input type="text" placeholder="Last Name" name="last" value={this.state.last} onChange={this.handleChange} required/><br />
           <input type="email" placeholder="E-mail" name="email" value={this.state.email} onChange={this.handleChange} required/><br />
           <input type="tel" placeholder="Phone number" name="phone" value={this.state.phone} onChange={this.handleChange} required/><br />
           <input type="date" placeholder="Date of Birth" name="date" onChange={this.handleChange} value={this.state.date} required/><br />
           <input type="text" placeholder="City" name="city" value={this.state.city} onChange={this.handleChange} required/><br />
-          <input type="text" placeholder="State" name="state" value={this.state.state} onChange={this.handleChange} required/><br />
+          <input type="text" placeholder="Country" name="state" value={this.state.state} onChange={this.handleChange} required/><br />
           <input type="url" placeholder="Link your picture" name="imgUrl" value={this.state.imgUrl} onChange={this.handleChange} required/><br />
           <label>
             <input type="checkbox" name="agreePrivacy" checked={this.state.agreePrivacy} onChange={this.handleChange} required/>
@@ -79,19 +98,36 @@ export default class CreateUser extends React.Component {
           </label><br />
           <button>Submit user</button>
           <input type="reset" onClick={this.handleReset}/>
+          <hr />
+          <small>
+            <p>First name: {this.state.first}</p>
+            <p>Last name: {this.state.last}</p>
+            <p>Email: {this.state.email}</p>
+            <p>Phone: {this.state.phone}</p>
+            <p>Date: {this.state.date}</p>
+            <p>City: {this.state.city}</p>
+            <p>Country: {this.state.state}</p>
+            <p>Agreement to privacy policy: {this.state.agreePrivacy ? "agreed" : "not agreed"}</p>
+          </small>
+          <p style={{display: this.state.imgUrlCorrect ? "none" : null}}>
+            Here should be a picture preview; if you cannot see it, that means the URL you entered is invalid
+          </p>
+          <img 
+            src={this.state.imgUrl} 
+            alt="" 
+            onLoad={this.imageLoaded} 
+            onError={this.imageError}
+          />
         </form>
-        <hr />
-        <small>
-          <p>First: {this.state.first}</p>
-          <p>Last: {this.state.last}</p>
-          <p>email: {this.state.email}</p>
-          <p>phone: {this.state.phone}</p>
-          <p>date: {this.state.date}</p>
-          <p>city: {this.state.city}</p>
-          <p>state: {this.state.state}</p>
-          <p>Agree to privacy policy: {this.state.agreePrivacy ? "agreed" : "not agreed"}</p>
-        </small>
-        <img src={this.state.imgUrl} alt=""/>
+        <p style={{display: this.props.isLoggedIn && 'none'}}>
+          {/* You cannot register new users until you log in. */}
+          You cannot register new users until you&nbsp;
+          <Link 
+            to="login" 
+            onClick={() => {this.props.changeLinkActive(2)}}>
+              log in
+          </Link>
+        </p>
       </main>
     )
   }

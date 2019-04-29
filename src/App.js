@@ -12,7 +12,9 @@ class App extends Component {
     isLoading: false,
     users: [],
     isLoggedIn: false,
-    authToken: ''
+    authToken: '',
+    loginName: '',
+    linkActive: 1
   }
 
   componentDidMount() {
@@ -58,26 +60,57 @@ class App extends Component {
     return highestId
   }
 
+  logIn = (authHeader) => {
+    this.setState({
+      isLoggedIn: true,
+      authToken: authHeader
+    })
+  }
+
+  logOut = () => {
+    this.setState({
+      isLoggedIn: false,
+      authToken: ''
+    })
+  }
+
+  changeLinkActive = num => {
+    this.setState({
+      linkActive: num
+    })
+  }
+
   render() {
     return (
       <div>
         <Router>
-          <Nav />
+          <Nav 
+            linkActive={this.state.linkActive}
+            changeLinkActive={this.changeLinkActive}
+          />
           <Route path='/' exact render={(props) => (
             <UsersList {...props} 
               users={this.state.users}
               isLoading={this.state.isLoading}
               deleteUser={this.deleteUser}
               authToken={this.state.authToken}
+              isLoggedIn={this.state.isLoggedIn}
             />
           )}/>
-          <Route path="/login" exact component={Login}></Route>
+          <Route path="/login" exact render={(props) => (
+            <Login {...props}
+              isLoggedIn={this.state.isLoggedIn}
+              logIn={this.logIn}
+              logOut={this.logOut}
+            />
+          )}/>
           <Route path="/register" exact render={(props) => (
             <CreateUser {...props} 
               usersLength={this.getHighestId()}
               isLoggedIn={this.state.isLoggedIn}
               authToken={this.state.authToken}
               createUser={this.createUser}
+              changeLinkActive={this.changeLinkActive}
             />
           )}/>
         </Router>

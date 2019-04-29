@@ -24,4 +24,4 @@ It should contain at least 3 pages:<br>
     -- date of birth (with calendar plugin).<br>
   </li>
 </ol>  
-API - The api used for getting the initial users set is located at http://randomuser.me. For users manipulation the fake api used can be found at https://reqres.in/. This api only fakes the responses to properly formatted POST, DELETE and PUT requests, so we are simulating the database changes in-app.
+API - The api used for getting the initial users set is located at http://randomuser.me. The fake api used for user manipulation can be found at https://reqres.in/. This api only fakes the responses to properly formatted POST, DELETE and PUT requests, so the actual database changes (like user deletion) are simulated in-app.
