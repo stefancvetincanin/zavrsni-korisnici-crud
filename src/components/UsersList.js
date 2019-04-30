@@ -78,12 +78,14 @@ export default class UsersList extends React.Component {
       modalId: modalFromUser,
       displayModal: true
     })
+    document.querySelector("body").classList.add("stop-scroll")
   }
 
   closeModal = () => {
     this.setState({
       displayModal: false
     })
+    document.querySelector("body").classList.remove("stop-scroll")
   }
 
   handlePageChange = page => {
@@ -130,7 +132,7 @@ export default class UsersList extends React.Component {
       )
 
     return (
-      <main className="container">
+      <div>
         <Modal
           user={this.state.userModal}
           displayModal={this.state.displayModal}
@@ -139,27 +141,57 @@ export default class UsersList extends React.Component {
           isLoggedIn={this.props.isLoggedIn}
           editUser={this.props.editUser}
         />
-        <h2>List of users</h2>
-        <input
-          type={this.state.searchType}
-          name="searchField"
-          onChange={this.handleChange}
-          placeholder={`Search by ${this.state.searchType === "text" ? "Last Name" : "User ID"}...`}
-        />
-        <select
-          value={this.state.searchType}
-          name="searchType"
-          onChange={this.handleChange}>
-          <option value="text">Search by Name</option>
-          <option value="number">Search by ID</option>
-        </select>
-        <br />
-        <button onClick={this.sortNameAsc}>Last name - ascending</button>
-        <button onClick={this.sortNameDsc}>Last name - descending</button>
-        <br />
-        <button onClick={this.sortIdAsc}>ID - ascending</button>
-        <button onClick={this.sortIdDsc}>ID - descending</button><br />
-        <select
+        <main 
+          style={{filter: this.state.displayModal && "blur(2px)"}}
+          className="container">
+          <h2>List of users</h2>
+          <input
+            type={this.state.searchType}
+            name="searchField"
+            onChange={this.handleChange}
+            placeholder={`Search by ${this.state.searchType === "text" ? "Last Name" : "User ID"}...`}
+          />
+          <select
+            value={this.state.searchType}
+            name="searchType"
+            onChange={this.handleChange}>
+            <option value="text">Search by Name</option>
+            <option value="number">Search by ID</option>
+          </select>
+          <br />
+          <button onClick={this.sortNameAsc}>Last name - ascending</button>
+          <button onClick={this.sortNameDsc}>Last name - descending</button>
+          <br />
+          <button onClick={this.sortIdAsc}>ID - ascending</button>
+          <button onClick={this.sortIdDsc}>ID - descending</button><br />
+          <select
+              name="usersPerPage"
+              value={this.state.usersPerPage}
+              onChange={this.handleChange}>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+            </select>
+          <div className="pagination-container" 
+            style={{display: (displayUsers.length <= this.state.usersPerPage) ? "none" : null}}>
+            <Pagination 
+              usersPerPage={this.state.usersPerPage}
+              totalUsers={displayUsers.length}
+              handlePageChange={this.handlePageChange}
+              currentPage={this.state.currentPage}/>
+          </div>
+          <div className="users-list">
+            {displayUsersPaginated}
+          </div>
+          <div className="pagination-container"
+            style={{display: (displayUsers.length <= this.state.usersPerPage) ? "none" : null}}>
+            <Pagination 
+              usersPerPage={this.state.usersPerPage}
+              totalUsers={displayUsers.length}
+              handlePageChange={this.handlePageChange}
+              currentPage={this.state.currentPage}/>
+          </div>
+          <select
             name="usersPerPage"
             value={this.state.usersPerPage}
             onChange={this.handleChange}>
@@ -167,34 +199,9 @@ export default class UsersList extends React.Component {
             <option value="10">10</option>
             <option value="20">20</option>
           </select>
-        <div className="pagination-container" 
-          style={{display: (displayUsers.length <= this.state.usersPerPage) ? "none" : null}}>
-          <Pagination 
-            usersPerPage={this.state.usersPerPage}
-            totalUsers={displayUsers.length}
-            handlePageChange={this.handlePageChange}
-            currentPage={this.state.currentPage}/>
-        </div>
-        <div className="users-list">
-          {displayUsersPaginated}
-        </div>
-        <div className="pagination-container"
-          style={{display: (displayUsers.length <= this.state.usersPerPage) ? "none" : null}}>
-          <Pagination 
-            usersPerPage={this.state.usersPerPage}
-            totalUsers={displayUsers.length}
-            handlePageChange={this.handlePageChange}
-            currentPage={this.state.currentPage}/>
-        </div>
-        <select
-          name="usersPerPage"
-          value={this.state.usersPerPage}
-          onChange={this.handleChange}>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-        </select>
-      </main>
+        </main>
+      </div>
+      
     )
   }
 }

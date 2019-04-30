@@ -168,7 +168,7 @@ input[type=text], input[type=number] {
 
 .mask {
   background: black;
-  opacity: 0.3;
+  opacity: 0.2;
   top: 0;
   left: 0;
   bottom: 0;
@@ -176,6 +176,11 @@ input[type=text], input[type=number] {
   position: fixed;
   z-index: 1;
   cursor: pointer;
+}
+
+.stop-scroll {
+  height: 100%;
+  overflow: hidden;
 }
 
 /* Responsive */
