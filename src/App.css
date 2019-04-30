@@ -47,6 +47,10 @@ nav a {
   color: white;
 }
 
+.link-item:hover {
+  text-decoration: underline;
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -151,13 +155,14 @@ input[type=text], input[type=number] {
   cursor: pointer;
   width: 25px;
   height: 25px;
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: black;
   text-align: center;
   font-size: 20px;
   line-height: 25px;
   position: relative;
-  top: -30px;
+  top: 5px;
+  right: 5px;
   float: right;
 }
 

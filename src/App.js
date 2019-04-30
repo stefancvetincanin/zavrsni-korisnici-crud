@@ -11,7 +11,7 @@ class App extends Component {
   state = {
     isLoading: false,
     users: [],
-    isLoggedIn: false,
+    isLoggedIn: true,
     authToken: '',
     loginName: '',
     linkActive: 1
@@ -47,6 +47,18 @@ class App extends Component {
     temp.push(newUser)
     this.setState({
       users: temp
+    })
+  }
+
+  editUser = (editedUser, editedUserId) => {
+    this.setState(prevState => {
+      return {
+        users: prevState.users.map(user => {
+          if(user.userId === editedUserId)
+            return editedUser
+          return user
+        })
+      }
     })
   }
 
@@ -96,6 +108,7 @@ class App extends Component {
               authToken={this.state.authToken}
               isLoggedIn={this.state.isLoggedIn}
               changeLinkActive={this.changeLinkActive}
+              editUser={this.editUser}
             />
           )}/>
           <Route path="/zavrsni-korisnici-crud/login" exact render={(props) => (

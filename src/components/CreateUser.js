@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Route, Link } from 'react-router-dom' //eslint-disable-line
+import MaskedInput from 'react-text-mask'
 
 export default class CreateUser extends React.Component {
   state = {
@@ -33,7 +34,7 @@ export default class CreateUser extends React.Component {
         first: this.state.first.toLowerCase(),
         last: this.state.last.toLowerCase()
       },
-      email: this.state.email.toLowerCase(),
+      email: this.state.email,
       phone: this.state.phone,
       dob: {
         date: this.state.date
@@ -50,7 +51,6 @@ export default class CreateUser extends React.Component {
     if(this.state.imgUrlCorrect) {
       this.props.createUser(newUser)
       this.handleReset()
-      alert("Succesfully submited!")
     } else
       alert("The image url you entered failed to load. Please check your link and try again.")
   }
@@ -91,7 +91,17 @@ export default class CreateUser extends React.Component {
           <input type="text" placeholder="First Name" name="first" value={this.state.first} onChange={this.handleChange} required/><br />
           <input type="text" placeholder="Last Name" name="last" value={this.state.last} onChange={this.handleChange} required/><br />
           <input type="email" placeholder="E-mail" name="email" value={this.state.email} onChange={this.handleChange} required/><br />
-          <input type="tel" placeholder="Phone number" name="phone" value={this.state.phone} onChange={this.handleChange} required/><br />
+          {/* <input type="tel" placeholder="Phone number" name="phone" value={this.state.phone} onChange={this.handleChange} required/><br /> */}
+          <MaskedInput
+            mask={['(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+            placeholder="Enter a phone number"
+            value={this.state.phone}
+            guide={false}
+            onChange={this.handleChange}
+            name="phone"
+            pattern="[(]\d{3}[)]\s\d{3}-\d+"
+            required
+          /><br />
           <input type="date" placeholder="Date of Birth" name="date" onChange={this.handleChange} value={this.state.date} required/><br />
           <input type="text" placeholder="City" name="city" value={this.state.city} onChange={this.handleChange} required/><br />
           <input type="text" placeholder="Country" name="state" value={this.state.state} onChange={this.handleChange} required/><br />
