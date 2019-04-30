@@ -4,13 +4,26 @@ import { capitalize } from '../utils/helpers'
 export default class Modal extends Component {
   state = {
     editMode: false
+
   }
 
-  // componentDidUpdate() {
-  //   alert("updateovan modal")
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.users !== prevProps.users) {
+  //     this.setState({
+
+  //     })
+  //   }
   // }
 
-  deleteById = () => {
+  deleteConfirm = (e) => {
+    if(window.confirm("Are you sure you want to delete this user?"))
+      this.deleteById(e)
+    else
+      e.preventDefault()
+  }
+
+  deleteById = (e) => {
+    e.preventDefault()
     this.props.deleteUser(this.props.user.userId)
     this.props.closeModal()
     this.setState({
@@ -58,7 +71,11 @@ export default class Modal extends Component {
           <div className="modal">
             <div className="modal-close" onClick={this.closeModal}>X</div><br />
             <img src={this.props.user.picture.large} alt="User" width="128"/><br />
-            <button onClick={this.editMode}>Edit User</button><br />
+            <button 
+              style={{display: !this.props.isLoggedIn && "none"}}
+              onClick={this.editMode}>
+                Edit User
+            </button><br />
             <p>
               Name: {capitalize(this.props.user.name.first)}<br />
               Surname: {capitalize(this.props.user.name.last)}<br />
@@ -92,7 +109,10 @@ export default class Modal extends Component {
               Phone: {this.props.user.phone}<br />
             </p>
             <button onClick={this.handleSubmit}>Submit</button>
-            <button onClick={this.deleteById}>Delete user</button>
+            <button 
+              onClick={(e) => this.deleteConfirm(e)}>
+                Delete user
+            </button>
           </form>
         </div>
         <div className="mask" onClick={this.closeModal}></div>

@@ -136,6 +136,7 @@ export default class UsersList extends React.Component {
           displayModal={this.state.displayModal}
           closeModal={this.closeModal}
           deleteUser={this.props.deleteUser}
+          isLoggedIn={this.props.isLoggedIn}
         />
         <h2>List of users</h2>
         <input
