@@ -15,6 +15,10 @@ export default class CreateUser extends React.Component {
     imgUrlCorrect: false
   }
 
+  componentDidMount() {
+    this.props.changeLinkActive(3)
+  }
+
   handleChange = (e) => {
     const { name, type, value, checked } = e.target
     type === 'checkbox' ? 

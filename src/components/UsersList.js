@@ -20,6 +20,10 @@ export default class UsersList extends React.Component {
     currentPage : 1
   }
 
+  componentDidMount() {
+    this.props.changeLinkActive(1)
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props.users !== prevProps.users) {
       this.setState({

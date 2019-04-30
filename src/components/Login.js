@@ -7,6 +7,10 @@ export default class Login extends React.Component {
     password: ''
   }
 
+  componentDidMount() {
+    this.props.changeLinkActive(2)
+  }
+
   handleChange = e => {
     const {name, value} = e.target
     this.setState({

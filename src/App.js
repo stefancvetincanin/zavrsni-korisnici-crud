@@ -88,23 +88,25 @@ class App extends Component {
             linkActive={this.state.linkActive}
             changeLinkActive={this.changeLinkActive}
           />
-          <Route path='/' exact render={(props) => (
+          <Route path='/zavrsni-korisnici-crud/' exact render={(props) => (
             <UsersList {...props} 
               users={this.state.users}
               isLoading={this.state.isLoading}
               deleteUser={this.deleteUser}
               authToken={this.state.authToken}
               isLoggedIn={this.state.isLoggedIn}
+              changeLinkActive={this.changeLinkActive}
             />
           )}/>
-          <Route path="/login" exact render={(props) => (
+          <Route path="/zavrsni-korisnici-crud/login" exact render={(props) => (
             <Login {...props}
               isLoggedIn={this.state.isLoggedIn}
               logIn={this.logIn}
               logOut={this.logOut}
+              changeLinkActive={this.changeLinkActive}
             />
           )}/>
-          <Route path="/register" exact render={(props) => (
+          <Route path="/zavrsni-korisnici-crud/register" exact render={(props) => (
             <CreateUser {...props} 
               usersLength={this.getHighestId()}
               isLoggedIn={this.state.isLoggedIn}
