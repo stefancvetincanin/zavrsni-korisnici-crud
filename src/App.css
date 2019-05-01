@@ -144,11 +144,21 @@ input[type=text], input[type=number] {
   width: 320px;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background-color: ivory;
   border: 1px solid black;
-  z-index: 2;
+  z-index: 3;
+}
+
+.sending-loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid lightseagreen
 }
 
 .modal-close {
@@ -176,6 +186,10 @@ input[type=text], input[type=number] {
   position: fixed;
   z-index: 1;
   cursor: pointer;
+}
+
+.app-mask {
+  cursor: initial;
 }
 
 .stop-scroll {

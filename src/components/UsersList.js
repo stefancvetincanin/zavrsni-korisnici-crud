@@ -140,6 +140,8 @@ export default class UsersList extends React.Component {
           deleteUser={this.props.deleteUser}
           isLoggedIn={this.props.isLoggedIn}
           editUser={this.props.editUser}
+          authToken={this.props.authToken}
+          isSendingData={this.props.isSendingData}
         />
         <main 
           style={{filter: this.state.displayModal && "blur(2px)"}}
@@ -179,6 +181,9 @@ export default class UsersList extends React.Component {
               totalUsers={displayUsers.length}
               handlePageChange={this.handlePageChange}
               currentPage={this.state.currentPage}/>
+          </div>
+          <div style={{display: (displayUsers.length <= this.state.usersPerPage) ? 'none' : null}}>
+            Results found: {displayUsers.length}
           </div>
           <div className="users-list">
             {displayUsersPaginated}

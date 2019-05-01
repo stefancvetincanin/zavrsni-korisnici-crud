@@ -48,9 +48,28 @@ export default class CreateUser extends React.Component {
         large: this.state.imgUrl
       }
     }
+
     if(this.state.imgUrlCorrect) {
-      this.props.createUser(newUser)
-      this.handleReset()
+      this.props.isSendingData(true)
+      fetch('https://reqres.in/api/users', {
+        method: "POST",
+        headers: {
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+          'Auth-Token': this.props.authToken
+        },
+        body: JSON.stringify(newUser)
+      })
+        .then(response => response.json())
+        .then(() => {
+          this.props.isSendingData(false)
+          this.props.createUser(newUser)
+          this.handleReset()
+        })
+        .catch(error => {
+          this.props.isSendingData(false)
+          console.error("CUSTOM ERROR: " + error)
+        })
     } else
       alert("The image url you entered failed to load. Please check your link and try again.")
   }
@@ -90,7 +109,8 @@ export default class CreateUser extends React.Component {
           onSubmit={this.handleForm}>
           <input type="text" placeholder="First Name" name="first" value={this.state.first} onChange={this.handleChange} required/><br />
           <input type="text" placeholder="Last Name" name="last" value={this.state.last} onChange={this.handleChange} required/><br />
-          <input type="email" placeholder="E-mail" name="email" value={this.state.email} onChange={this.handleChange} required/><br />
+          <input type="email" placeholder="E-mail" name="email" value={this.state.email} onChange={this.handleChange} required 
+          pattern=".{1,}(@)\w{2,}\.\w{2,}"/><br />
           {/* <input type="tel" placeholder="Phone number" name="phone" value={this.state.phone} onChange={this.handleChange} required/><br /> */}
           <MaskedInput
             mask={['(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}

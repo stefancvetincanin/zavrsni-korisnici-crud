@@ -1,5 +1,4 @@
 import React from 'react'
-import {createAuthToken} from '../utils/helpers'
 
 export default class Login extends React.Component {
   state = {
@@ -27,13 +26,33 @@ export default class Login extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    
     // alert('form submitted!')
     if(this.state.username === 'admin' && this.state.password === 'password') {
-      const authToken = createAuthToken()
-      this.props.logIn(authToken)
-      this.handleReset()
+      this.props.isSendingData(true)
+      fetch('https://reqres.in/api/login', {
+        method: "POST",
+        headers: {
+          'Accept': '*/*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          'email': this.state.username,
+          'password': this.state.password
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          const authToken = data.token
+          this.props.logIn(authToken)
+          this.handleReset()
+          this.props.isSendingData(false)
+        }).catch(error => {
+          this.props.isSendingData(false)
+          console.error("CUSTOM ERROR: " + error)
+        })
     } else {
-      alert('incorrect credentials')
+      alert('Your username and/or password were incorrect')
     }    
   }
 

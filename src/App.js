@@ -6,15 +6,17 @@ import UsersList from './components/UsersList'
 import Login from './components/Login'
 import CreateUser from './components/CreateUser'
 import Footer from './components/Footer'
+import SendingData from './components/SendingData'
 
 class App extends Component {
   state = {
     isLoading: false,
     users: [],
-    isLoggedIn: true,
+    isLoggedIn: false,
     authToken: '',
     loginName: '',
-    linkActive: 1
+    linkActive: 1,
+    isSendingData: false
   }
 
   componentDidMount() {
@@ -92,6 +94,12 @@ class App extends Component {
     })
   }
 
+  isSendingData = status => {
+    this.setState({
+      isSendingData: status
+    })
+  }
+
   render() {
     return (
       <div>
@@ -109,6 +117,7 @@ class App extends Component {
               isLoggedIn={this.state.isLoggedIn}
               changeLinkActive={this.changeLinkActive}
               editUser={this.editUser}
+              isSendingData={this.isSendingData}
             />
           )}/>
           <Route path="/zavrsni-korisnici-crud/login" exact render={(props) => (
@@ -117,6 +126,7 @@ class App extends Component {
               logIn={this.logIn}
               logOut={this.logOut}
               changeLinkActive={this.changeLinkActive}
+              isSendingData={this.isSendingData}
             />
           )}/>
           <Route path="/zavrsni-korisnici-crud/register" exact render={(props) => (
@@ -126,10 +136,12 @@ class App extends Component {
               authToken={this.state.authToken}
               createUser={this.createUser}
               changeLinkActive={this.changeLinkActive}
+              isSendingData={this.isSendingData}
             />
           )}/>
         </Router>
         <Footer />
+        <div style={{display: !this.state.isSendingData && 'none'}}><SendingData /></div>
       </div>
     )
   }

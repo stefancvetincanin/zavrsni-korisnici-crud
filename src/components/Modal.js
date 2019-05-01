@@ -37,11 +37,28 @@ export default class Modal extends Component {
 
   deleteById = (e) => {
     e.preventDefault()
-    this.props.deleteUser(this.props.user.userId)
-    this.props.closeModal()
-    this.setState({
-      editMode: false
-    })
+    this.props.isSendingData(true)
+    fetch(`https://reqres.in/api/users/2`, {
+        method: 'DELETE',
+        headers: {
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+          'Auth-Token': this.props.authToken
+        }
+      })
+        .then(response => response)
+        .then(() => {
+          this.props.deleteUser(this.props.user.userId)
+          this.props.closeModal()
+          this.setState({
+            editMode: false
+          })
+          this.props.isSendingData(false)
+        })
+        .catch(error => {
+          this.props.isSendingData(false)
+          console.error("CUSTOM ERROR: " + error)
+        })
   }
 
   // Submit functionality
@@ -67,8 +84,26 @@ export default class Modal extends Component {
         large: this.props.user.picture.large
       }
     }
-    this.props.editUser(editedUser, this.props.user.userId)
-    this.viewMode()
+    this.props.isSendingData(true)
+    fetch('https://reqres.in/api/users/2', {
+        method: 'PUT',
+        headers: {
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+          'Auth-Token': this.props.authToken
+        },
+        body: JSON.stringify(editedUser)
+      })
+        .then(response => response.json())
+        .then(() => {
+          this.props.editUser(editedUser, this.props.user.userId)
+          this.viewMode()
+          this.props.isSendingData(false)
+        })
+        .catch(error => {
+          this.props.isSendingData(false)
+          console.error("CUSTOM ERROR: " + error)
+        })
   }
 
   // Changing the display mode
@@ -113,7 +148,7 @@ export default class Modal extends Component {
               onClick={this.editMode}>
                 Edit User
             </button>
-            <div style={{display: this.props.isLoggedIn && "none", textAlign: "center"}}>To delete or edit users, log in</div><br/>
+            <div style={{display: this.props.isLoggedIn && "none", textAlign: "center"}}>You must log in before you can edit users</div><br/>
             <div style={{lineHeight: "25px"}}>
               Name: {capitalize(this.state.first)}<br />
               Surname: {capitalize(this.state.last)}<br />
@@ -141,7 +176,8 @@ export default class Modal extends Component {
             <input type="date" name="date" value={this.state.date.substring(0, 10)} onChange={this.handleChange} placeholder="Date of Birth" required/>
             <input type="text" name="city" value={this.state.city} onChange={this.handleChange} placeholder="City" required/>
             <input type="text" name="state" value={this.state.state} onChange={this.handleChange} placeholder="State" required/>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email" required/>
+            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email" 
+              pattern=".{1,}(@)\w{2,}\.\w{2,}" required/>
             <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder="Phone" required/><br /><br />
             <button>Submit</button>
             <button 
