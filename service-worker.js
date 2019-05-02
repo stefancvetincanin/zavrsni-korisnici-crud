@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/zavrsni-korisnici-crud/precache-manifest.0f8604715f567df9ab59a4685944aa8a.js"
+  "/zavrsni-korisnici-crud/precache-manifest.d2da89f1119c1eb71f93f496f89b8db6.js"
 );
 
 workbox.clientsClaim();
