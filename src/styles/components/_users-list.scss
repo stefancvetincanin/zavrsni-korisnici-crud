@@ -1,0 +1,40 @@
+.loader{
+  text-align: center;
+  padding: 50px 0;
+}
+
+.users-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  @media #{$small} {
+    flex-direction: row;
+  }
+}
+
+.user-info {
+  padding: 15px;
+  h3 {
+    margin: 5px 0;
+    color: $fontDark;
+  }
+  @media #{$small} {
+    flex-basis: 50%;
+  }
+  @media #{$medium} {
+    flex-basis: 33%;
+  }
+  @media #{$large} {
+    flex-basis: 25%;
+  }
+  @media #{$x-large} {
+    flex-basis: 20%;
+  }
+}
+
+.user-info:hover {
+  background-color: $inputColor;
+  cursor: pointer;
+  box-shadow: 
+    4px 4px 2px whitesmoke;
+}

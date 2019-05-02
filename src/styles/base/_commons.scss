@@ -1,0 +1,6 @@
+.container {
+  @media #{$x-large} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
