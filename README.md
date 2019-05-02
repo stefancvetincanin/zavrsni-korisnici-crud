@@ -1,5 +1,7 @@
 # zavrsni-rad-korisnici
 
+Login credentials - username: admin, password: password.<br><br>
+
 A simple crud app for users with auth support.<br>
 Project will be done in some FE framework (Reactjs or Vuejs).<br>
 It should be done as a SPA, so some routing library should be involved, for example for Vuejs should be Vue-router, or React Router for react.<br>

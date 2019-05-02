@@ -68,6 +68,7 @@ export default class CreateUser extends React.Component {
         })
         .catch(error => {
           this.props.isSendingData(false)
+          this.props.showServerError()
           console.error("CUSTOM ERROR: " + error)
         })
     } else

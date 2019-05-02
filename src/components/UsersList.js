@@ -142,6 +142,7 @@ export default class UsersList extends React.Component {
           editUser={this.props.editUser}
           authToken={this.props.authToken}
           isSendingData={this.props.isSendingData}
+          showServerError={this.props.showServerError}
         />
         <main 
           style={{filter: this.state.displayModal && "blur(2px)"}}

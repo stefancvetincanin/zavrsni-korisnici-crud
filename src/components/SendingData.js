@@ -6,7 +6,7 @@ export default function SendingData() {
     <div>
       <div className="sending-loader">
         <img 
-          style={{position: 'relative', top: '2px'}}
+          style={{position: 'relative', display: 'block'}}
           src={Loader} 
           alt="" 
           width="100"

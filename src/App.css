@@ -6,6 +6,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -17,6 +21,11 @@ header {
   margin: 0;
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-around;
+}
+
 h1 { 
   margin: 0;
 }
@@ -26,10 +35,15 @@ nav {
   margin: 0;
 }
 
-nav > ul {
+nav ul {
+  display: none;
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.nav-visible {
+  display: block;
 }
 
 nav li {
@@ -45,10 +59,60 @@ nav a {
 .link-item {
   padding: 5px 0 3px;
   color: white;
+  border-bottom: 1px solid white;
 }
 
 .link-item:hover {
   text-decoration: underline;
+}
+
+.hide-log-out-mobile {
+  display: none;
+}
+
+.nav-button-small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+#responsive-log-out {
+  cursor: pointer;
+}
+
+/* Back to top button */
+.btt {
+  text-decoration: none;
+  position: fixed;
+  /* display: none; */
+  visibility: hidden;
+  display: inline-block;
+  right: 20px;
+  bottom: 20px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  border: 2px solid lightseagreen;
+  background-color: whitesmoke;
+  color: lightseagreen;
+  opacity: 0;
+  transition: all 1000ms;
+  transform: scale(0.8)
+}
+
+.btt i {
+  font-size: 2em;
+}
+
+.btt-visible {
+  /* display: inline-block; */
+  visibility: visible;
+  opacity: 0.5;
+}
+
+.btt-visible:hover {
+  opacity: 1;
 }
 
 /* Footer */
@@ -155,9 +219,21 @@ input[type=text], input[type=number] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3;
+  z-index: 4;
   background: white;
   border-radius: 50%;
+  border: 2px solid lightseagreen
+}
+
+.server-error-notification {
+  padding: 15px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  background: white;
   border: 2px solid lightseagreen
 }
 
@@ -190,6 +266,7 @@ input[type=text], input[type=number] {
 
 .app-mask {
   cursor: initial;
+  z-index: 3;
 }
 
 .stop-scroll {
@@ -211,8 +288,12 @@ input[type=text], input[type=number] {
 @media (min-width: 768px) {
   /* Header and Nav */
   nav ul {
-    display: flex;
+    display: flex !important;
     flex-direction: row;
+  }
+
+  .nav-visible {
+    display: flex;
   }
 
   nav li {
@@ -226,6 +307,24 @@ input[type=text], input[type=number] {
 
   .link-item {
     background-color: transparent !important;
+    border-bottom: none;
+  }
+
+  #responsive-log-out {
+    display: none;
+  }
+
+  .hide-log-out-mobile {
+    display: block;
+  }
+
+  .nav-button-small {
+    display: none;
+  }
+
+  /* Back to top button */
+  .btt {
+    transform: scale(1)
   }
 
   /* Users list */

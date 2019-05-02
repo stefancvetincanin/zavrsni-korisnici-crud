@@ -57,6 +57,7 @@ export default class Modal extends Component {
         })
         .catch(error => {
           this.props.isSendingData(false)
+          this.props.showServerError()
           console.error("CUSTOM ERROR: " + error)
         })
   }
@@ -102,6 +103,7 @@ export default class Modal extends Component {
         })
         .catch(error => {
           this.props.isSendingData(false)
+          this.props.showServerError()
           console.error("CUSTOM ERROR: " + error)
         })
   }

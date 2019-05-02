@@ -7,6 +7,7 @@ import Login from './components/Login'
 import CreateUser from './components/CreateUser'
 import Footer from './components/Footer'
 import SendingData from './components/SendingData'
+import ServerError from './components/ServerError'
 
 class App extends Component {
   state = {
@@ -16,7 +17,9 @@ class App extends Component {
     authToken: '',
     loginName: '',
     linkActive: 1,
-    isSendingData: false
+    isSendingData: false,
+    showNavMobile: false,
+    serverError: false
   }
 
   componentDidMount() {
@@ -34,6 +37,13 @@ class App extends Component {
           isLoading: false
         })
       })
+
+    window.addEventListener('scroll', function() {
+      if(document.documentElement.scrollTop >= 200) 
+        document.getElementById("back-to-top").classList.add("btt-visible")
+      else 
+        document.getElementById("back-to-top").classList.remove("btt-visible")
+    })
   }
 
   deleteUser = (userId) => {
@@ -100,6 +110,26 @@ class App extends Component {
     })
   }
 
+  toggleNavMobile = () => {
+    this.setState(prevState => {
+      return {
+        showNavMobile: !prevState.showNavMobile
+      }
+    })
+  }
+
+  hideServerError = () => {
+    this.setState({
+      serverError: false
+    })
+  }
+
+  showServerError = () => {
+    this.setState({
+      serverError: true
+    })
+  }
+
   render() {
     return (
       <div>
@@ -107,8 +137,13 @@ class App extends Component {
           <Nav 
             linkActive={this.state.linkActive}
             changeLinkActive={this.changeLinkActive}
+            logOut={this.logOut}
+            isLoggedIn={this.state.isLoggedIn}
+            toggleNavMobile={this.toggleNavMobile}
+            showNavMobile={this.state.showNavMobile}
           />
-          <Route path='/zavrsni-korisnici-crud/' exact render={(props) => (
+          <Route path='/zavrsni-korisnici-crud/' exact 
+            render={(props) => (
             <UsersList {...props} 
               users={this.state.users}
               isLoading={this.state.isLoading}
@@ -118,18 +153,22 @@ class App extends Component {
               changeLinkActive={this.changeLinkActive}
               editUser={this.editUser}
               isSendingData={this.isSendingData}
+              showServerError={this.showServerError}
             />
           )}/>
-          <Route path="/zavrsni-korisnici-crud/login" exact render={(props) => (
+          <Route path="/zavrsni-korisnici-crud/login" exact 
+            render={(props) => (
             <Login {...props}
               isLoggedIn={this.state.isLoggedIn}
               logIn={this.logIn}
               logOut={this.logOut}
               changeLinkActive={this.changeLinkActive}
               isSendingData={this.isSendingData}
+              showServerError={this.showServerError}
             />
           )}/>
-          <Route path="/zavrsni-korisnici-crud/register" exact render={(props) => (
+          <Route path="/zavrsni-korisnici-crud/register" exact 
+            render={(props) => (
             <CreateUser {...props} 
               usersLength={this.getHighestId()}
               isLoggedIn={this.state.isLoggedIn}
@@ -137,11 +176,21 @@ class App extends Component {
               createUser={this.createUser}
               changeLinkActive={this.changeLinkActive}
               isSendingData={this.isSendingData}
+              showServerError={this.showServerError}
             />
           )}/>
         </Router>
         <Footer />
-        <div style={{display: !this.state.isSendingData && 'none'}}><SendingData /></div>
+        <div 
+          style={{display: !this.state.isSendingData && 'none'}}>
+            <SendingData />
+        </div>
+        <div style={{display: !this.state.serverError && 'none'}}>
+          <ServerError hideServerError={this.hideServerError}/>
+        </div>
+        <a id="back-to-top" className="btt" href="#top">
+          <i className="fas fa-chevron-up"></i>
+        </a>
       </div>
     )
   }
