@@ -37,6 +37,9 @@ class App extends Component {
           isLoading: false
         })
       })
+      .catch(() => {
+        this.showServerError()
+      })
 
     window.addEventListener('scroll', function() {
       if(document.documentElement.scrollTop >= 200) 

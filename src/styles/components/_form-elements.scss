@@ -16,6 +16,13 @@ input {
   margin-bottom: 5px;
   color: $inputFontColor;
   font-weight: 500;
+  transition: all 500ms;
+}
+
+input:invalid {
+  // outline: rgb(247, 163, 177) solid 2px;
+  box-shadow:
+    2px 2px 2px pink;
 }
 
 input[type=date]:valid {

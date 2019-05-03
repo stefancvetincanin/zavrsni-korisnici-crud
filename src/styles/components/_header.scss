@@ -1,0 +1,97 @@
+/* Header */
+header {
+  background-image: linear-gradient(to right, $colorBase,  $colorBaseLight);
+  margin: 0;
+  h1 { 
+    margin: 0;
+    color: $fontLight;
+  }
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Nav */
+nav {
+  margin: 0;
+
+  ul {
+    display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @media #{$medium} {
+    display: flex !important; // !important added to override inline styles added by react
+    flex-direction: row;
+  }
+  }
+}
+
+
+.nav-visible {
+  display: block;
+  @media #{$medium} {
+    display: flex;
+  }
+}
+
+nav li {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  @media #{$medium} {
+    width: 200px;
+    border-right: 1px solid white;
+  }
+}
+
+nav li:last-of-type {
+  @media #{$medium} {
+    border-right: none;
+  }
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.link-item {
+  padding: 5px 0 3px;
+  color: white;
+  border-bottom: 1px solid white;
+  @media #{$medium} {
+    background-color: transparent !important; // Find a way to get rid of this !important
+    border-bottom: none;
+  }
+}
+
+.link-item:hover {
+  text-decoration: underline;
+}
+
+.hide-log-out-mobile {
+  display: none;
+  @media #{$medium} {
+    display: block;
+  }
+}
+
+.nav-button-small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  cursor: pointer;
+  @media #{$medium} {
+    display: none;
+  }
+}
+
+#responsive-log-out {
+  cursor: pointer;
+  @media #{$medium} {
+    display: none;
+  }
+}
