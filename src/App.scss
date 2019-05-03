@@ -1,11 +1,12 @@
 @import './styles/base/reset';
 @import './styles/base/vars';
 @import './styles/base/commons';
+@import './styles/base/form-elements';
 
 @import './styles/components/back-to-top';
 @import './styles/components/footer';
 @import './styles/components/users-list';
-@import './styles/components/form-elements';
 @import './styles/components/pagination';
 @import './styles/components/header';
 @import './styles/components/modals';
+@import './styles/components/create-user';

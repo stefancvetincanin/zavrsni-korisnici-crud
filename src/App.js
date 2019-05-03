@@ -121,6 +121,12 @@ class App extends Component {
     })
   }
 
+  hideNavMobile = () => {
+    this.setState({
+      showNavMobile: false
+    })
+  }
+
   hideServerError = () => {
     this.setState({
       serverError: false
@@ -144,6 +150,7 @@ class App extends Component {
             isLoggedIn={this.state.isLoggedIn}
             toggleNavMobile={this.toggleNavMobile}
             showNavMobile={this.state.showNavMobile}
+            hideNavMobile={this.hideNavMobile}
           />
           <Route path='/zavrsni-korisnici-crud/' exact 
             render={(props) => (

@@ -147,27 +147,31 @@ export default class UsersList extends React.Component {
         <main 
           style={{filter: this.state.displayModal && "blur(2px)"}}
           className="container">
-          <h2>List of users</h2>
-          <input
-            type={this.state.searchType}
-            name="searchField"
-            onChange={this.handleChange}
-            placeholder={`Search by ${this.state.searchType === "text" ? "Last Name" : "User ID"}...`}
-          />
-          <select
-            value={this.state.searchType}
-            name="searchType"
-            onChange={this.handleChange}>
-            <option value="text">Search by Name</option>
-            <option value="number">Search by ID</option>
-          </select>
-          <br />
-          <button onClick={this.sortNameAsc}>Last name - ascending</button>
-          <button onClick={this.sortNameDsc}>Last name - descending</button>
-          <br />
-          <button onClick={this.sortIdAsc}>ID - ascending</button>
-          <button onClick={this.sortIdDsc}>ID - descending</button><br />
-          <select
+          <div className="users-list-form">
+            <h2>List of users</h2>
+            <input
+              type={this.state.searchType}
+              name="searchField"
+              onChange={this.handleChange}
+              placeholder={`Search by ${this.state.searchType === "text" ? "Last Name" : "User ID"}...`}
+            />
+            <select
+              value={this.state.searchType}
+              name="searchType"
+              onChange={this.handleChange}>
+              <option value="text">Search by Name</option>
+              <option value="number">Search by ID</option>
+            </select>
+            <br />
+            <button onClick={this.sortNameAsc}>Surname - ascending</button>
+            <button onClick={this.sortNameDsc}>Surname - descending</button>
+            <br />
+            <button onClick={this.sortIdAsc}>ID - ascending</button>
+            <button onClick={this.sortIdDsc}>ID - descending</button><br />
+          </div>
+          <div className="select-users-container">
+            Select number of users to display:&nbsp;
+            <select
               name="usersPerPage"
               value={this.state.usersPerPage}
               onChange={this.handleChange}>
@@ -175,6 +179,7 @@ export default class UsersList extends React.Component {
               <option value="10">10</option>
               <option value="20">20</option>
             </select>
+          </div>
           <div className="pagination-container" 
             style={{display: (displayUsers.length <= this.state.usersPerPage) ? "none" : null}}>
             <Pagination 
@@ -197,14 +202,17 @@ export default class UsersList extends React.Component {
               handlePageChange={this.handlePageChange}
               currentPage={this.state.currentPage}/>
           </div>
-          <select
-            name="usersPerPage"
-            value={this.state.usersPerPage}
-            onChange={this.handleChange}>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-          </select>
+          <div className="select-users-container">
+            Select number of users to display:&nbsp;
+            <select
+              name="usersPerPage"
+              value={this.state.usersPerPage}
+              onChange={this.handleChange}>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+            </select>
+          </div>
         </main>
       </div>
       

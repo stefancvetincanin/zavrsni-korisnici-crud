@@ -2,9 +2,10 @@
 header {
   background-image: linear-gradient(to right, $colorBase,  $colorBaseLight);
   margin: 0;
+  color: $fontLight;
   h1 { 
     margin: 0;
-    color: $fontLight;
+    color: $fontDark;
   }
 }
 
@@ -79,6 +80,7 @@ nav a {
 }
 
 .nav-button-small {
+  color: $fontDark;
   display: flex;
   justify-content: center;
   align-items: center;

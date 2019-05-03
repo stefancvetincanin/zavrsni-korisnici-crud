@@ -24,7 +24,7 @@ export default function Nav(props) {
         
         <nav className="container">
           <ul style={{display: props.showNavMobile && "block"}}>
-            <li onClick={props.toggleNavMobile}>
+            <li onClick={props.hideNavMobile}>
               <Link to="/zavrsni-korisnici-crud/">
                 <div className="link-item"
                   style={{ backgroundColor: props.linkActive === 1 && 'LightSeaGreen', textDecoration: props.linkActive === 1 && 'underline' }}
@@ -32,14 +32,14 @@ export default function Nav(props) {
                   List of users</div>
               </Link>
             </li>
-            <li onClick={props.toggleNavMobile}>
+            <li onClick={props.hideNavMobile}>
               <Link to="/zavrsni-korisnici-crud/login">
                 <div className="link-item"
                   style={{ backgroundColor: props.linkActive === 2 && 'LightSeaGreen', textDecoration: props.linkActive === 2 && 'underline' }}
                 >Log in</div>
               </Link>
             </li>
-            <li onClick={props.toggleNavMobile} id="responsive-log-out">
+            <li onClick={props.hideNavMobile} id="responsive-log-out">
               <div 
                 className="link-item" 
                 style={{display: props.isLoggedIn ? null : 'none'}} 
@@ -48,7 +48,7 @@ export default function Nav(props) {
                 Log out
               </div>
             </li>
-            <li onClick={props.toggleNavMobile}>
+            <li onClick={props.hideNavMobile}>
               <Link to="/zavrsni-korisnici-crud/register">
                 <div className="link-item"
                   style={{ backgroundColor: props.linkActive === 3 && 'LightSeaGreen', textDecoration: props.linkActive === 3 && 'underline' }}

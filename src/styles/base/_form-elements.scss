@@ -1,0 +1,79 @@
+select {
+  outline: none;
+  border: none;
+  background-color: $colorBase;
+  color: $fontLight;
+  padding: 2px;
+  cursor: pointer;
+}
+
+// Inputs
+input {
+  background-color: $inputColor;
+  border: none;
+  padding: 3px;
+  outline: none;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  color: $inputFontColor;
+  font-weight: 500;
+  transition: all 500ms;
+  width: 200px;
+  @media #{$large} {
+    font-size: 1em;
+  }
+}
+
+input:invalid {
+  // outline: rgb(252, 220, 226) solid 1px;
+  box-shadow:
+    1px 1px 1px rgb(252, 220, 226);
+}
+
+input[type=date]:valid {
+  height: 22px;
+  color: $inputFontColor;
+  font-size: 0.8em;
+  @media #{$large} {
+    height: 25px;
+  }
+}
+
+input[type=date]:invalid {
+  height: 22px;
+  color: $placeholderColor;
+  font-weight: 300;
+  font-size: 0.8em;
+  @media #{$large} {
+    height: 25px;
+  }
+}
+
+input[type=checkbox] {
+  width: initial;
+  box-shadow: none;
+}
+
+::placeholder {
+  color: $placeholderColor;
+  font-weight: 300;
+}
+
+// Buttons
+input[type=reset], button {
+  color: $fontLight;
+  background-color: $colorBase;
+  outline: none;
+  border: none;
+  display: inline-block;
+  padding: 5px 15px;
+  margin: 3px;
+  font-size: 1em;
+  font-weight: 400;
+  width: initial;
+  cursor: pointer;
+}
+
+input[type=reset]:hover, button:hover {
+  background-color: $fontDark;
+}

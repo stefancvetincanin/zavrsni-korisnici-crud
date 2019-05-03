@@ -1,0 +1,163 @@
+.add-user-form {
+  color: $fontDark;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: row;
+  @media #{$medium} {
+    justify-content: center;
+  }
+  @media #{$x-large} {
+    padding: 0;
+  }
+
+  p {
+    font-size: 0.8em;
+    @media #{$medium} {
+      font-size: 1em;
+    }
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 22px;
+    margin: 15px 0;
+    @media #{$large} {
+      font-size: 26px;
+    }
+    i {
+      cursor: pointer;
+    }
+  }
+
+  button {
+    margin-left: 0px;
+    margin-top: 6px;
+  }
+}
+
+.img-validation-msg {
+  display: none;
+}
+
+.img-url:valid ~.img-validation-msg {
+  display: block;
+  text-transform: capitalize;
+}
+
+//Checklist
+.add-user-signals {
+  padding-left: 5px;
+
+  .checklist-filler {
+    height: 49px;
+    margin: 0;
+    @media #{$large} {
+      height: 52px;
+    }
+  }
+  
+  .checklist-div {
+    display: flex;
+    align-items: center;
+    height: 27px;
+    margin: 0;
+    @media #{$large} {
+      height: 30px;
+    }
+    i {
+      margin: 0;
+      padding: 0;
+      transition: all 300ms;
+    }
+    i.animated-check {
+      animation-name: checklist;
+      animation-delay: 300ms;
+      animation-duration: 500ms;
+      animation-timing-function: linear;
+    }
+  }
+}
+
+@keyframes checklist {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// Custom checkmark
+.lbl-check {
+  position: relative;
+  padding-left: 30px;
+  user-select: none;
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  left: 0px;
+}
+
+.checkbox-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: $colorBaseLight;
+  border-radius: 50%;
+  border: 1px solid #d3cccc;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.checkbox-custom:after {
+  content: "\2714";
+  font-size: 12px;
+  position: absolute;
+  display: none;
+  left: -1px;
+  top: 1px;
+}
+
+input[type=checkbox]:checked ~ .checkbox-custom {
+  background-color: white;
+  animation: check-ani 600ms;
+  animation-timing-function: linear;
+}
+
+input[type=checkbox]:checked ~ .checkbox-custom:after {
+  display: block;
+  text-align: center;
+  width: 20px;
+  color: $fontDark;
+}
+
+@keyframes check-ani {
+  0% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+  33% {
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+  }
+  66% {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+  }
+  100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+  }
+}

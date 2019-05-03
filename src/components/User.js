@@ -2,19 +2,11 @@ import React, { Component } from 'react'
 import { capitalize } from '../utils/helpers'
 
 export default class User extends Component {
-  state = {
-    display: true
-  }
-
-  getModalId = () => {
-    // alert('radi' + this.props.user.userId)
-    this.props.getModalId(this.props.user.userId)
-  }
 
   render() {
     return (
-      <div onClick={this.getModalId} className="user-info">
-        <div>
+      <div className="user-info">
+        <div onClick={() => this.props.getModalId(this.props.user.userId)}>
           <div className="info-img-container" >
             <div className="info-container">
               <i className="fas fa-info-circle"></i>
@@ -26,10 +18,9 @@ export default class User extends Component {
               </p>
             </div>
             <div className="img-container">
-              <img src={this.props.user.picture.large} alt="User" width="128"/>
+              <img src={this.props.user.picture.large} alt="User" width="128" height="128"/>
             </div>
           </div>
-
           <div className="user-info-add">
             <div>
               <p className="user-dob">
