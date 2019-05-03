@@ -1,14 +1,14 @@
 {
-  "main.css": "/zavrsni-korisnici-crud/static/css/main.2bca4a39.chunk.css",
-  "main.js": "/zavrsni-korisnici-crud/static/js/main.e28035b6.chunk.js",
-  "main.js.map": "/zavrsni-korisnici-crud/static/js/main.e28035b6.chunk.js.map",
+  "main.css": "/zavrsni-korisnici-crud/static/css/main.f2debffb.chunk.css",
+  "main.js": "/zavrsni-korisnici-crud/static/js/main.ce1e6590.chunk.js",
+  "main.js.map": "/zavrsni-korisnici-crud/static/js/main.ce1e6590.chunk.js.map",
   "runtime~main.js": "/zavrsni-korisnici-crud/static/js/runtime~main.3d64908d.js",
   "runtime~main.js.map": "/zavrsni-korisnici-crud/static/js/runtime~main.3d64908d.js.map",
   "static/js/2.9ae7deb3.chunk.js": "/zavrsni-korisnici-crud/static/js/2.9ae7deb3.chunk.js",
   "static/js/2.9ae7deb3.chunk.js.map": "/zavrsni-korisnici-crud/static/js/2.9ae7deb3.chunk.js.map",
   "index.html": "/zavrsni-korisnici-crud/index.html",
-  "precache-manifest.d2da89f1119c1eb71f93f496f89b8db6.js": "/zavrsni-korisnici-crud/precache-manifest.d2da89f1119c1eb71f93f496f89b8db6.js",
+  "precache-manifest.3d2e5c3d86bfda0f1cac04ea21ae1c8d.js": "/zavrsni-korisnici-crud/precache-manifest.3d2e5c3d86bfda0f1cac04ea21ae1c8d.js",
   "service-worker.js": "/zavrsni-korisnici-crud/service-worker.js",
-  "static/css/main.2bca4a39.chunk.css.map": "/zavrsni-korisnici-crud/static/css/main.2bca4a39.chunk.css.map",
+  "static/css/main.f2debffb.chunk.css.map": "/zavrsni-korisnici-crud/static/css/main.f2debffb.chunk.css.map",
   "static/media/loader.gif": "/zavrsni-korisnici-crud/static/media/loader.7ba725da.gif"
 }
