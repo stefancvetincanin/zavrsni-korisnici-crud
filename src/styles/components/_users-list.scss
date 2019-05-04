@@ -7,7 +7,7 @@
   padding: 0 10px;
 
   ::placeholder {
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: $colorBase;
   }
 
@@ -19,6 +19,10 @@
     font-size: 0.8em;
   }
 
+  select {
+    height: 24px;
+  }
+
   .sort-container {
     display: flex;
     justify-content: center;
@@ -26,17 +30,18 @@
     > div:first-child {
       width: 110px;
     }
+    div {
+      text-align: center;
+    }
     .sort-button {
       border-radius: 100%;
-      padding: -2px;
       margin: 2px;
-      font-size: 1.6em;
+      font-size: 1.7em;
       cursor: pointer;
       background-color: $fontLight;
     }
     .sort-button:hover {
-      background-color: $bodyColor;
-      color: $inputFontColor;
+      background-color: $experimentalColor;
     }
   }
 }

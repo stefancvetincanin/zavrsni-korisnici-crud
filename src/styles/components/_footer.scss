@@ -7,11 +7,17 @@ footer.footer-container {
   text-align: center;
   i, small {
     color: $fontLight;
-    padding: 5px 15px;
+    padding: 4px 9px;
+    @media #{$medium} {
+      padding: 5px 16px;
+    }
   }
   i {
     font-size: 1.2em;
     transition: all 500ms;
+    @media #{$medium} {
+      font-size: 2em;
+    }
   }
   i:hover {
     color: $experimentalColor;

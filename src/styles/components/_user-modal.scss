@@ -1,13 +1,75 @@
 .modal {
   position: fixed;
-  height: 400px;
-  width: 320px;
+  height: 457px;
+  width: 310px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: ivory;
-  border: 1px solid black;
+  background-color: $bodyColor;
+  border: 1px solid $colorBase;
   z-index: 3;
+  @media #{$medium} {
+    height: 472px;
+  }
+  input {
+    margin-left: 4px;
+    margin-bottom: 4.5px;
+    background-color: $fontLight;
+    width: 100%;
+  }
+  .modal-email {
+    @media #{$medium} {
+      font-size: 0.9em;
+      height: 25px;
+    }
+  }
+}
+
+.modal-form-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  img {
+    margin: 0 0 18px;
+    border-radius: 100%;
+    border: 1px solid $colorBase;
+    padding: 2px;
+  }
+  > button {
+    margin: 8px;
+  }
+  form {
+    margin-right: 10px;
+    button {
+      margin: 4px 0 8px 4px;
+      font-size: 0.95em;
+      padding: 4px 8px;
+    }
+  }
+}
+
+.modal-form-columns {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  span {
+    line-height: 23px;
+    margin: 1px 10px 3.5px;
+    display: block;
+    @media #{$medium} {
+      line-height: 26px;
+    }
+  }
+}
+
+.modal-label {
+  height: 23px;
+  margin: 3px 0 3.5px 10px;
+  text-align: right;
+  @media #{$medium} {
+    height: 26.5px;
+  }
 }
 
 .modal-close {

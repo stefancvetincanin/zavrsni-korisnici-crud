@@ -8,7 +8,7 @@
     padding: 5px;
     background: linear-gradient(167deg, $fontLight -50%, $bodyColor, $fontLight 150%);
     @media #{$medium} {
-      background: linear-gradient(167deg, $colorBase 4%, $fontLight 11%, #43a8a8 22%, $fontLight 67%, $colorBase 100%);
+      background: linear-gradient(167deg, $colorBase 0%, $fontLight 11%, #43a8a8 22%, $fontLight 67%, $colorBase 105%);
     }
   }
   
@@ -34,7 +34,7 @@
     box-shadow: 
     3px 3px 3px lightgrey;
     @media #{$medium} {
-      background: linear-gradient(167deg, $inputFontColor 4%, $bodyColor 11%, $inputFontColor 18%, $bodyColor 67%, $colorBase 100%);
+      background: linear-gradient(167deg, $inputFontColor 0%, $bodyColor 11%, $inputFontColor 18%, $bodyColor 67%, $colorBase 105%);
     }
 }
 

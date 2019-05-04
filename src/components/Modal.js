@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { capitalize } from '../utils/helpers'
+import ModalLabels from './ModalLabels'
 
 export default class Modal extends Component {
   state = {
@@ -63,7 +64,6 @@ export default class Modal extends Component {
   }
 
   // Submit functionality
-
   handleSubmit = e => {
     e.preventDefault()
     const editedUser = {
@@ -134,6 +134,7 @@ export default class Modal extends Component {
     this.setState({[name]: value})
   }
 
+  // Display
   render() {
     if (!this.props.displayModal) {
       return null
@@ -143,22 +144,38 @@ export default class Modal extends Component {
       return (
         <div className="modal-container">
           <div className="modal">
-            <div className="modal-close" onClick={this.closeModal}>X</div><br />
-            <img src={this.props.user.picture.large} alt="User" width="128"/><br />
-            <button 
-              style={{display: !this.props.isLoggedIn && "none"}}
-              onClick={this.editMode}>
+            <div 
+              className="modal-close" 
+              onClick={this.closeModal}
+            >
+              X
+            </div>
+
+            <div className="modal-form-container">
+              <img src={this.props.user.picture.large} alt="User" width="128" height="128"/>
+              <button
+                style={{display: !this.props.isLoggedIn && "none"}}
+                onClick={this.editMode}
+              >
                 Edit User
-            </button>
-            <div style={{display: this.props.isLoggedIn && "none", textAlign: "center"}}>You must log in before you can edit users</div><br/>
-            <div style={{lineHeight: "25px"}}>
-              Name: {capitalize(this.state.first)}<br />
-              Surname: {capitalize(this.state.last)}<br />
-              Born: {this.state.date.substring(0, 10)}<br />
-              City: {capitalize(this.state.city)}<br />
-              State: {capitalize(this.state.state)}<br />
-              E-mail: {this.state.email}<br />
-              Phone: {this.state.phone}<br />
+              </button>
+              <div
+                style={{display: this.props.isLoggedIn && "none", textAlign: "center"}}
+              >
+                <p>You must log in before you can edit users</p>
+              </div>
+              <div className="modal-form-columns">
+                <ModalLabels />
+                <div>
+                  <span>{capitalize(this.state.first)}</span>
+                  <span>{capitalize(this.state.last)}</span>
+                  <span>{this.state.date.substring(0, 10)}</span>
+                  <span>{capitalize(this.state.city)}</span>
+                  <span>{capitalize(this.state.state)}</span>
+                  <span>{this.state.email}</span>
+                  <span>{this.state.phone}</span>
+                </div>
+              </div>
             </div>
           </div>
           <div className="mask" onClick={this.closeModal}></div>
@@ -169,24 +186,38 @@ export default class Modal extends Component {
     return (
       <div className="modal-container">
         <div className="modal">
-          <div className="modal-close" onClick={this.closeModal}>X</div><br />
-          <img src={this.props.user.picture.large} alt="User" width="128"/><br />
-          <button onClick={this.viewMode}>View Info</button><br />
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" name="first" value={this.state.first} onChange={this.handleChange} placeholder="Name" required/>
-            <input type="text" name="last" value={this.state.last} onChange={this.handleChange} placeholder="Surname" required/>
-            <input type="date" name="date" value={this.state.date.substring(0, 10)} onChange={this.handleChange} placeholder="Date of Birth" required/>
-            <input type="text" name="city" value={this.state.city} onChange={this.handleChange} placeholder="City" required/>
-            <input type="text" name="state" value={this.state.state} onChange={this.handleChange} placeholder="State" required/>
-            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email" 
-              pattern=".{1,}(@)\w{2,}\.\w{2,}" required/>
-            <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder="Phone" required/><br /><br />
-            <button>Submit</button>
-            <button 
-              onClick={(e) => this.deleteConfirm(e)}>
-                Delete user
+          <div 
+            className="modal-close" 
+            onClick={this.closeModal}
+          >
+            X
+          </div>
+          <div className="modal-form-container">
+            <img src={this.props.user.picture.large} alt="User" width="128" height="128"/>
+            <button onClick={this.viewMode}>
+              View Info
             </button>
-          </form>
+            <div className="modal-form-columns">
+              <ModalLabels />
+              <form onSubmit={this.handleSubmit}>
+                <input type="text" name="first" value={this.state.first} onChange={this.handleChange} placeholder="Name" required/>
+                <input type="text" name="last" value={this.state.last} onChange={this.handleChange} placeholder="Surname" required/>
+                <input type="date" name="date" value={this.state.date.substring(0, 10)} onChange={this.handleChange} placeholder="Date of Birth" required/>
+                <input type="text" name="city" value={this.state.city} onChange={this.handleChange} placeholder="City" required/>
+                <input type="text" name="state" value={this.state.state} onChange={this.handleChange} placeholder="State" required/>
+                <input type="text" className ="modal-email" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email" 
+                  pattern=".{1,}(@)\w{2,}\.\w{2,}" required/>
+                <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder="Phone" required/><br />
+                <button>
+                  Submit
+                </button>
+                <button 
+                  onClick={(e) => this.deleteConfirm(e)}>
+                    Delete user
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
         <div className="mask" onClick={this.closeModal}></div>
       </div>

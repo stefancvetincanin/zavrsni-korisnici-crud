@@ -141,7 +141,7 @@ class App extends Component {
 
   render() {
     return (
-      <div class="grid-container">
+      <div className="grid-container">
         <Router>
           <Nav 
             linkActive={this.state.linkActive}

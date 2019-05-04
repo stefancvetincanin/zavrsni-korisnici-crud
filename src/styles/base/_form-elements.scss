@@ -34,13 +34,14 @@ input {
 input:invalid {
   // outline: rgb(252, 220, 226) solid 1px;
   box-shadow:
-    1px 1px 1px rgb(252, 220, 226);
+    2px 2px 2px #f3b5c0;
 }
 
 input[type=date]:valid {
   height: 22px;
   color: $inputFontColor;
   font-size: 0.8em;
+  font-weight: 500;
   @media #{$large} {
     height: 25px;
   }
