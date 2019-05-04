@@ -14,6 +14,7 @@
     }
   }
   select {
+    padding: 5px;
     margin-top: 3px;
     margin-bottom: 3px;
   }
@@ -26,17 +27,19 @@
 }
 
 .page-button {
-  display: inline-block;
+  // display: inline-block;
   text-align: center;
-  padding: 3px 8px;
-  border: 1px solid lightseagreen;
+  padding: 5px 9px;
+  margin-bottom: 5px;
+  border: 1px solid $colorBase;
+  border-right: none;
   cursor: pointer;
   user-select: none;
 }
 
 .page-button:hover {
-  background-color: rgb(191, 225, 247);
-  color: white;
+  background-color: $inputFontColor;
+  color: $experimentalColor;
 }
 
 .page-button:first-of-type {
@@ -47,4 +50,10 @@
 .page-button:last-of-type {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  border-right: 1px solid $colorBase;
+}
+
+.page-button-active {
+  background-color: $colorBase;
+  color: $experimentalColor;
 }

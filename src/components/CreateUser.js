@@ -17,6 +17,7 @@ export default class CreateUser extends React.Component {
     imgUrl: '',
     imgUrlCorrect: false,
     showInstructions: false,
+    userAdded: false
   }
 
   componentDidMount() {
@@ -68,6 +69,7 @@ export default class CreateUser extends React.Component {
           this.props.isSendingData(false)
           this.props.createUser(newUser)
           this.handleReset()
+          this.setState({userAdded: true})
         })
         .catch(error => {
           this.props.isSendingData(false)
@@ -113,6 +115,11 @@ export default class CreateUser extends React.Component {
   render() {
     return (
       <main className="container">
+        <h2 
+          style={{display: !this.state.userAdded && 'none', textAlign: 'center', margin: '15px 0'}}
+        >
+          User added successfully
+        </h2>
         <form
           className="add-user-form"
           style={{ display: !this.props.isLoggedIn && 'none' }}
@@ -120,7 +127,8 @@ export default class CreateUser extends React.Component {
         >
           <div className="add-user-inputs">
           <h2>
-            Create a user &nbsp;&nbsp;<i className="fas fa-info-circle" onClick={() => this.showInstructions(true)}></i>
+            Add a new user &nbsp;&nbsp;
+            <i className="fas fa-info-circle" onClick={() => this.showInstructions(true)}></i>
           </h2>
             <input type="text" placeholder="First Name" name="first" value={this.state.first} onChange={this.handleChange} required /><br />
             <input type="text" placeholder="Last Name" name="last" value={this.state.last} onChange={this.handleChange} required /><br />
@@ -148,8 +156,11 @@ export default class CreateUser extends React.Component {
             <button>Submit user</button>
             <input type="reset" onClick={this.handleReset} />
             <div className="img-validation-msg">
-              <p style={{ display: this.state.imgUrlCorrect ? "none" : null }}><small>
-                If you are seeing this message,<br /> it means that the URL<br /> you have entered is invalid.</small>
+              <p style={{ display: this.state.imgUrlCorrect ? "none" : null }}
+              >
+                <small>
+                  If you are seeing this message,<br /> it means that the URL<br /> you have entered is invalid.
+                </small>
               </p>
             </div><br></br>
             <img

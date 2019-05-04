@@ -55,7 +55,7 @@ export default class Pagination extends React.Component {
 
     const stylePrevButton = 
       (this.state.currentPage === 1) ? {
-        backgroundColor:"rgb(158, 148, 148)",
+        backgroundColor: "rgb(158, 148, 148)",
         color: "lightgrey",
         cursor: "default"
       } : null
@@ -66,13 +66,9 @@ export default class Pagination extends React.Component {
         color: "lightgrey",
         cursor: "default"
       } : null
+
     return (
       <div>
-        {/* Pagination:
-        <p>Current page: {this.state.currentPage}</p>
-        <p>Results: {this.props.totalUsers}</p>
-        <p>Users per page: {this.props.usersPerPage}</p>
-        <p>Number of pages: {totalPages}</p> */}
         <div className="page-buttons-container">
           <div 
             style={stylePrevButton}
@@ -88,7 +84,6 @@ export default class Pagination extends React.Component {
             &gt;
           </div>
         </div>
-        
       </div>
     )
   }

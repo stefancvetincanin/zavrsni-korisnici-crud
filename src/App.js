@@ -13,7 +13,7 @@ class App extends Component {
   state = {
     isLoading: false,
     users: [],
-    isLoggedIn: true,
+    isLoggedIn: false,
     authToken: '',
     loginName: '',
     linkActive: 1,

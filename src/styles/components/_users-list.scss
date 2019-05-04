@@ -12,6 +12,8 @@
   }
 
   input {
+    padding: 5px;
+    font-size: 0.9em;
     width: 145px;
   }
 
@@ -20,7 +22,7 @@
   }
 
   select {
-    height: 24px;
+    padding: 5px;
   }
 
   .sort-container {
@@ -36,7 +38,7 @@
     .sort-button {
       border-radius: 100%;
       margin: 2px;
-      font-size: 1.7em;
+      font-size: 2em;
       cursor: pointer;
       background-color: $fontLight;
     }

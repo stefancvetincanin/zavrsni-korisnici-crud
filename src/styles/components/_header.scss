@@ -74,7 +74,7 @@ nav a {
 }
 
 .link-item {
-  padding: 5px 0 3px;
+  padding: 5px 0 5px;
   color: $fontLight;
   border-bottom: 1px solid white;
   @media #{$medium} {
@@ -98,7 +98,7 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
+  font-size: 1.9em;
   cursor: pointer;
   @media #{$medium} {
     display: none;

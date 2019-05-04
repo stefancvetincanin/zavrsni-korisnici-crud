@@ -7,13 +7,13 @@ footer.footer-container {
   text-align: center;
   i, small {
     color: $fontLight;
-    padding: 4px 9px;
+    padding: 4px 5px;
     @media #{$medium} {
       padding: 5px 16px;
     }
   }
   i {
-    font-size: 1.2em;
+    font-size: 1.6em;
     transition: all 500ms;
     @media #{$medium} {
       font-size: 2em;
