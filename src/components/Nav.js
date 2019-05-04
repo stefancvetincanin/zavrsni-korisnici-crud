@@ -4,20 +4,31 @@ import { BrowserRouter as Route, Link } from 'react-router-dom'
 export default function Nav(props) {
   return (
       <header id="top">
-        <div className="container header-container">
-          <h1>User database</h1>
-          <div className="nav-button-small">
-            <i 
-              onClick={props.toggleNavMobile}
-              className="fas fa-bars"></i>
+        <div className="container">
+          <div className="header-container">
+            <div className="banner-container-large">
+              <Link to='/zavrsni-korisnici-crud/'>
+                <h1>USER DATABASE<br />A CODE ASSIGNMENT</h1>
+              </Link>
             </div>
-          <div 
-            className="hide-log-out-mobile"
-            style={{display: props.isLoggedIn ? null : 'none'}}>
-            You are logged in.
-            <button onClick={() => {props.logOut()}}>
-              Log out
-            </button>
+            <div className="banner-container-small">
+              <Link to='/zavrsni-korisnici-crud/'>
+                <h1>CRUD DATABASE</h1>
+              </Link>
+            </div>
+            <div className="nav-button-small">
+              <i 
+                onClick={props.toggleNavMobile}
+                className="fas fa-bars"></i>
+            </div>
+            <div 
+              className="hide-log-out-mobile"
+              style={{display: props.isLoggedIn ? null : 'none'}}>
+              <span>You are logged in.&nbsp;</span>
+              <button onClick={() => {props.logOut()}}>
+                Log out
+              </button>
+            </div>
           </div>
         </div>
         

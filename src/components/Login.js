@@ -63,7 +63,6 @@ export default class Login extends React.Component {
         <form onSubmit={this.handleSubmit}
           style={{display: this.props.isLoggedIn && 'none'}}>
           <h2>Login</h2>
-          <h4 title="Username: 'admin', password: 'password'">(mouse-over for hint!)</h4>
           <input 
             type="text" 
             placeholder="Username" 

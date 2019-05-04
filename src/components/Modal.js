@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { capitalize } from '../utils/helpers'
 import ModalLabels from './ModalLabels'
+import { BrowserRouter as Route, Link } from 'react-router-dom' //eslint-disable-line
 
 export default class Modal extends Component {
   state = {
@@ -144,13 +145,10 @@ export default class Modal extends Component {
       return (
         <div className="modal-container">
           <div className="modal">
-            <div 
-              className="modal-close" 
-              onClick={this.closeModal}
-            >
-              X
-            </div>
-
+            <i 
+              className="fas fa-times-circle modal-close"
+              onClick={this.closeModal}>
+            </i>
             <div className="modal-form-container">
               <img src={this.props.user.picture.large} alt="User" width="128" height="128"/>
               <button
@@ -162,7 +160,7 @@ export default class Modal extends Component {
               <div
                 style={{display: this.props.isLoggedIn && "none", textAlign: "center"}}
               >
-                <p>You must log in before you can edit users</p>
+                <p>You must <Link to='/zavrsni-korisnici-crud/login'><span onClick={this.closeModal}>log in</span></Link> before you can edit users</p>
               </div>
               <div className="modal-form-columns">
                 <ModalLabels />
@@ -186,12 +184,10 @@ export default class Modal extends Component {
     return (
       <div className="modal-container">
         <div className="modal">
-          <div 
-            className="modal-close" 
-            onClick={this.closeModal}
-          >
-            X
-          </div>
+          <i 
+            className="fas fa-times-circle modal-close"
+            onClick={this.closeModal}>
+          </i>
           <div className="modal-form-container">
             <img src={this.props.user.picture.large} alt="User" width="128" height="128"/>
             <button onClick={this.viewMode}>

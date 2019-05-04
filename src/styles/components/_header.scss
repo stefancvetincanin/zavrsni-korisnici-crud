@@ -3,18 +3,11 @@ header {
   background-color: $colorBase;
   margin: 0;
   color: $fontLight;
-  // @media #{$medium} {
-  //   background-image: linear-gradient(to right, $colorBase,  $colorBaseLight);
-  // }
-  h1 { 
-    margin: 0;
-    color: $fontLight;
-    font-weight: 300;
-  }
 
   .hide-log-out-mobile {
     color: $fontLight;
   }
+
   button {
     color: $fontDark;
     background-color: $fontLight;
@@ -26,7 +19,43 @@ header {
 
 .header-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  padding: 0 10px;
+}
+
+.banner-container-large {
+  display: none;
+  flex-basis: 70%;
+  @media #{$medium} {
+    display: block;
+  }
+  h1 { 
+    padding-top: 10px;
+    display: inline-block;
+    margin: 0;
+    color: $fontLight;
+    font-weight: 300;
+    border-top: 2px solid $colorBase;
+  }
+  h1:hover {
+    color: $experimentalColor;
+    border-top: 2px solid $experimentalColor;
+  }
+}
+
+.banner-container-small {
+  display: block;
+  flex-basis: 70%;
+  @media #{$medium} {
+    display: none;
+  }
+  h1 {
+    display: inline-block;
+    margin: 0;
+    color: $fontLight;
+    font-weight: 300;
+    font-size: 26px;
+  }
 }
 
 /* Nav */
@@ -74,7 +103,7 @@ nav a {
 }
 
 .link-item {
-  padding: 5px 0 5px;
+  padding: 8px 0 5px;
   color: $fontLight;
   border-bottom: 1px solid white;
   @media #{$medium} {
@@ -85,18 +114,30 @@ nav a {
 
 .link-item:hover {
   text-decoration: underline;
+  color: $experimentalColor;
 }
 
 .hide-log-out-mobile {
+  flex-basis: 30%;
   display: none;
   @media #{$medium} {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    align-content: flex-start;
+  }
+  span {
+    color: $fontLight;
+  }
+  button {
+    margin-top: 0;
   }
 }
 
 .nav-button-small {
   display: flex;
-  justify-content: center;
+  flex-basis: 30%;
+  justify-content: flex-end;
   align-items: center;
   font-size: 1.9em;
   cursor: pointer;

@@ -185,12 +185,9 @@ export default class CreateUser extends React.Component {
             agreePrivacy={this.state.agreePrivacy}
           />
         </form>
-        <p style={{ display: this.props.isLoggedIn && 'none' }}>
-          {/* You cannot register new users until you log in. */}
+        <p style={{display: this.props.isLoggedIn && 'none', padding: '0 10px'}}>
           You cannot register new users until you&nbsp;
-          <Link
-            to="login"
-            onClick={() => { this.props.changeLinkActive(2) }}>
+          <Link to="/zavrsni-korisnici-crud/login">
             log in
           </Link>
         </p>
