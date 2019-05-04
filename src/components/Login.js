@@ -83,7 +83,7 @@ export default class Login extends React.Component {
           <input type="reset" onClick={this.handleReset} />
         </form>
         <div style={{display: !this.props.isLoggedIn && 'none'}}>
-          <h3>You are logged in</h3>
+          <h3>You are logged in:</h3>
           <button onClick={() => {this.props.logOut()}}>
             Log out
           </button>

@@ -203,7 +203,7 @@ export default class Modal extends Component {
                 <input type="text" name="state" value={this.state.state} onChange={this.handleChange} placeholder="State" required/>
                 <input type="text" className ="modal-email" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email" 
                   pattern=".{1,}(@)\w{2,}\.\w{2,}" required/>
-                <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder="Phone" required/><br />
+                <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder="Phone" pattern="[\s\d-]{6,10}" required/><br />
                 <button>
                   Submit
                 </button>
