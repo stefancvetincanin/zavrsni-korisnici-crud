@@ -148,8 +148,8 @@ export default class CreateUser extends React.Component {
             <button>Submit user</button>
             <input type="reset" onClick={this.handleReset} />
             <div className="img-validation-msg">
-              <p style={{ display: this.state.imgUrlCorrect ? "none" : null }}>
-                If you are seeing this message, it means that the URL you have entered is invalid.
+              <p style={{ display: this.state.imgUrlCorrect ? "none" : null }}><small>
+                If you are seeing this message,<br /> it means that the URL<br /> you have entered is invalid.</small>
               </p>
             </div><br></br>
             <img
@@ -159,6 +159,7 @@ export default class CreateUser extends React.Component {
               alt=""
               onLoad={this.imageLoaded}
               onError={this.imageError}
+              height={this.state.imgUrlCorrect ? null : '0'}
             />
           </div>
           <FormChecklist 

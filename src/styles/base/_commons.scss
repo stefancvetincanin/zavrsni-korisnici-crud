@@ -8,3 +8,21 @@
     margin: 0 auto;
   }
 }
+
+.grid-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+body {
+  background-color: $bodyColor;
+}
+
+main {
+  padding-bottom: 20px;
+  h2 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}

@@ -1,7 +1,22 @@
 .select-users-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 3px;
+  flex-direction: column;
+  @media #{$medium} {
+    flex-direction: row;
+  }
+  span {
+    font-size: 0.9em;
+    @media #{$medium} {
+      font-size: 1em;
+    }
+  }
+  select {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
 }
 
 .page-buttons-container {

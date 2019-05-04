@@ -5,6 +5,13 @@ select {
   color: $fontLight;
   padding: 2px;
   cursor: pointer;
+  option {
+    color: $fontLight;
+  }
+}
+
+select:hover {
+  background-color: $inputFontColor;
 }
 
 // Inputs
@@ -72,8 +79,9 @@ input[type=reset], button {
   font-weight: 400;
   width: initial;
   cursor: pointer;
+  transition: all 300ms;
 }
 
 input[type=reset]:hover, button:hover {
-  background-color: $fontDark;
+  background-color: $inputFontColor;
 }

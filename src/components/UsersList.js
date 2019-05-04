@@ -132,7 +132,7 @@ export default class UsersList extends React.Component {
       )
 
     return (
-      <div>
+      <main>
         <Modal
           user={this.state.userModal}
           displayModal={this.state.displayModal}
@@ -144,7 +144,7 @@ export default class UsersList extends React.Component {
           isSendingData={this.props.isSendingData}
           showServerError={this.props.showServerError}
         />
-        <main 
+        <div 
           style={{filter: this.state.displayModal && "blur(2px)"}}
           className="container">
           <div className="users-list-form">
@@ -153,7 +153,7 @@ export default class UsersList extends React.Component {
               type={this.state.searchType}
               name="searchField"
               onChange={this.handleChange}
-              placeholder={`Search by ${this.state.searchType === "text" ? "Last Name" : "User ID"}...`}
+              placeholder={`Search by ${this.state.searchType === "text" ? "Name" : "User ID"}...`}
             />
             <select
               value={this.state.searchType}
@@ -162,15 +162,19 @@ export default class UsersList extends React.Component {
               <option value="text">Search by Name</option>
               <option value="number">Search by ID</option>
             </select>
-            <br />
-            <button onClick={this.sortNameAsc}>Surname - ascending</button>
-            <button onClick={this.sortNameDsc}>Surname - descending</button>
-            <br />
-            <button onClick={this.sortIdAsc}>ID - ascending</button>
-            <button onClick={this.sortIdDsc}>ID - descending</button><br />
+            <div className="sort-container">
+              <div>Sort by name: </div>
+              <i className="fas fa-arrow-alt-circle-up sort-button" onClick={this.sortNameAsc}></i>
+              <i className="fas fa-arrow-alt-circle-down sort-button" onClick={this.sortNameDsc}></i>
+            </div>
+            <div className="sort-container">
+              <div>Sort by ID: </div>
+              <i className="fas fa-arrow-alt-circle-up sort-button" onClick={this.sortIdAsc}></i>
+              <i className="fas fa-arrow-alt-circle-down sort-button" onClick={this.sortIdDsc}></i>
+            </div>
           </div>
           <div className="select-users-container">
-            Select number of users to display:&nbsp;
+            <span>Select number of users to display:&nbsp;</span>
             <select
               name="usersPerPage"
               value={this.state.usersPerPage}
@@ -188,7 +192,7 @@ export default class UsersList extends React.Component {
               handlePageChange={this.handlePageChange}
               currentPage={this.state.currentPage}/>
           </div>
-          <div style={{display: (displayUsers.length <= this.state.usersPerPage) ? 'none' : null}}>
+          <div style={{display: (displayUsers.length <= this.state.usersPerPage) ? 'none' : null, padding: '0px 10px'}}>
             Results found: {displayUsers.length}
           </div>
           <div className="users-list">
@@ -203,7 +207,7 @@ export default class UsersList extends React.Component {
               currentPage={this.state.currentPage}/>
           </div>
           <div className="select-users-container">
-            Select number of users to display:&nbsp;
+            <span>Select number of users to display:&nbsp;</span>
             <select
               name="usersPerPage"
               value={this.state.usersPerPage}
@@ -213,8 +217,8 @@ export default class UsersList extends React.Component {
               <option value="20">20</option>
             </select>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
       
     )
   }

@@ -59,7 +59,7 @@ export default class Login extends React.Component {
 
   render() {
     return(
-      <main className="container">
+      <main className="container login-container">
         <form onSubmit={this.handleSubmit}
           style={{display: this.props.isLoggedIn && 'none'}}>
           <h2>Login</h2>

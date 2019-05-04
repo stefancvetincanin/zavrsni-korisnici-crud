@@ -9,7 +9,7 @@ export default class User extends Component {
         <div onClick={() => this.props.getModalId(this.props.user.userId)}>
           <div className="info-img-container" >
             <div className="info-container">
-              <i className="fas fa-info-circle"></i>
+              <i className="fas fa-info-circle user-info-button"></i>
               <h4>
                 {capitalize(this.props.user.name.first + " " + this.props.user.name.last)}
               </h4>

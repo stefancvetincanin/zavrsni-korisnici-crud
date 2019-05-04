@@ -1,0 +1,133 @@
+.user-info {
+  text-align: center;
+  padding: 5px 10px;
+  color: $fontDark;
+  > div {
+    transition: all 400ms;
+    border: 1px solid $colorBase;
+    padding: 5px;
+    background: linear-gradient(167deg, $fontLight -50%, $bodyColor, $fontLight 150%);
+    @media #{$medium} {
+      background: linear-gradient(167deg, $colorBase 4%, $fontLight 11%, #43a8a8 22%, $fontLight 67%, $colorBase 100%);
+    }
+  }
+  
+  @media #{$small} {
+    flex-basis: 100%;
+  }
+  @media #{$medium} {
+    flex-basis: 50%;
+  }
+  @media #{$large} {
+    flex-basis: 33%;
+  }
+  @media #{$x-large} {
+    flex-basis: 20%;
+    .user-from {
+      display: none;
+    }
+  }
+}
+
+.user-info:hover > div {
+    cursor: pointer;
+    box-shadow: 
+    3px 3px 3px lightgrey;
+    @media #{$medium} {
+      background: linear-gradient(167deg, $inputFontColor 4%, $bodyColor 11%, $inputFontColor 18%, $bodyColor 67%, $colorBase 100%);
+    }
+}
+
+.info-img-container {
+  display: flex;
+  justify-content: center;
+  img {
+    border-radius: 100px;
+    @media #{$x-large} {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+  @media #{$x-large} {
+    height: 113px;
+  }
+}
+
+.info-container {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  i {
+    font-size: 2em;
+    @media #{$x-large} {
+      margin-top: 8px;
+      flex-basis: 50%;
+    }
+  }
+  h4 {
+    color: $fontDark;
+    @media #{$x-large} {
+      flex-basis: 50%;
+      margin: 5px 0;
+    }
+  }
+  p {
+    text-align: center;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0;
+  }
+  .user-from {
+    @media #{$medium} {
+      display: none;
+    }
+  }
+}
+
+.user-info:hover  {
+  .user-info-button {
+    @media #{$medium} {
+      color: $fontLight;
+    }
+  }
+ 
+  h4 {
+    @media #{$medium} {
+      color: $fontLight;
+    }
+  }
+}
+
+.img-container {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-info-add {
+  display: none;
+  padding: 0 5px;
+  @media #{$medium} {
+    display: block;
+  }
+  > div {
+    display: flex;
+  }
+  p {
+    margin: 5px 0;
+  }
+}
+
+.user-location, .user-dob {
+  flex-basis: 50%;
+  font-size: 0.8em;
+  i {
+    font-size: 2em;
+    margin-bottom: 2px;
+  }
+  @media #{$x-large} {
+    min-height: 80px;
+  }
+}

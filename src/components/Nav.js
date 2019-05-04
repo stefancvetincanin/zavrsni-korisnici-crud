@@ -3,7 +3,6 @@ import { BrowserRouter as Route, Link } from 'react-router-dom'
 
 export default function Nav(props) {
   return (
-    <div>
       <header id="top">
         <div className="container header-container">
           <h1>User database</h1>
@@ -58,6 +57,5 @@ export default function Nav(props) {
           </ul>
         </nav>
       </header>
-    </div>
   )
 }

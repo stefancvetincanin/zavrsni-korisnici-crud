@@ -1,15 +1,30 @@
-$colorBase: #50d1d1;
-$colorBaseLight: #65f3f8;
+$colorBase: #026670;
+$colorBaseLight: #9fedd7;
 
 $placeholderColor: #90a1a1;
-$inputColor: #dbffff;
+$inputColor: whitesmoke;
 $inputFontColor: #1b9292;
 
-$fontLight: #fff;
-$fontDark: #41b6b6;
+$fontLight: #fefdc7;
+$fontDark: #026670;
+
+$bodyColor: #edeae5;
+$experimentalColor: #fce181;
 
 $x-small: "all and (max-width: 320px)";
 $small: "all and (min-width: 576px)";
 $medium: "all and (min-width: 768px)";
 $large: "all and (min-width: 992px)";
 $x-large: "all and (min-width: 1200px)";
+
+// OLD COLORS
+
+// $colorBase: #50d1d1;
+// $colorBaseLight: #65f3f8;
+
+// $placeholderColor: #90a1a1;
+// $inputColor: #dbffff;
+// $inputFontColor: #1b9292;
+
+// $fontLight: #fff;
+// $fontDark: #41b6b6;

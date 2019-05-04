@@ -41,7 +41,6 @@
 
 .img-url:valid ~.img-validation-msg {
   display: block;
-  text-transform: capitalize;
 }
 
 //Checklist
@@ -114,7 +113,7 @@ input[type=checkbox] {
   left: 0;
   height: 20px;
   width: 20px;
-  background-color: $colorBaseLight;
+  background-color: $fontLight;
   border-radius: 50%;
   border: 1px solid #d3cccc;
   transition: all 1s;

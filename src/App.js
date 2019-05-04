@@ -13,7 +13,7 @@ class App extends Component {
   state = {
     isLoading: false,
     users: [],
-    isLoggedIn: false,
+    isLoggedIn: true,
     authToken: '',
     loginName: '',
     linkActive: 1,
@@ -141,7 +141,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div class="grid-container">
         <Router>
           <Nav 
             linkActive={this.state.linkActive}

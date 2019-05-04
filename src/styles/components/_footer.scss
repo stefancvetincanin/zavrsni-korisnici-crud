@@ -1,3 +1,19 @@
-footer {
+footer.footer-container {
+  padding: 4px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $colorBase;
   text-align: center;
+  i, small {
+    color: $fontLight;
+    padding: 5px 15px;
+  }
+  i {
+    font-size: 1.2em;
+    transition: all 500ms;
+  }
+  i:hover {
+    color: $experimentalColor;
+  }
 }

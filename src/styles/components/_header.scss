@@ -1,11 +1,26 @@
 /* Header */
 header {
-  background-image: linear-gradient(to right, $colorBase,  $colorBaseLight);
+  background-color: $colorBase;
   margin: 0;
   color: $fontLight;
+  // @media #{$medium} {
+  //   background-image: linear-gradient(to right, $colorBase,  $colorBaseLight);
+  // }
   h1 { 
     margin: 0;
+    color: $fontLight;
+    font-weight: 300;
+  }
+
+  .hide-log-out-mobile {
+    color: $fontLight;
+  }
+  button {
     color: $fontDark;
+    background-color: $fontLight;
+  }
+  button:hover {
+    background-color: $experimentalColor;
   }
 }
 
@@ -60,7 +75,7 @@ nav a {
 
 .link-item {
   padding: 5px 0 3px;
-  color: white;
+  color: $fontLight;
   border-bottom: 1px solid white;
   @media #{$medium} {
     background-color: transparent !important; // Find a way to get rid of this !important
@@ -80,7 +95,6 @@ nav a {
 }
 
 .nav-button-small {
-  color: $fontDark;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,6 +102,9 @@ nav a {
   cursor: pointer;
   @media #{$medium} {
     display: none;
+  }
+  i {
+    color: $fontLight;
   }
 }
 

@@ -3,29 +3,33 @@
   position: fixed;
   visibility: hidden;
   display: inline-block;
-  right: 20px;
-  bottom: 20px;
-  padding: 8px 10px;
+  right: 4px;
+  bottom: 4px;
+  padding: 6px 8px;
   border-radius: 7px;
-  border: 2px solid lightseagreen;
-  background-color: whitesmoke;
-  color: lightseagreen;
+  border: 2px solid $colorBase;
+  background-color: $fontLight;
+  color: $colorBase;
   opacity: 0;
   transition: all 1000ms;
   transform: scale(0.8);
+  @media #{$medium} {
+    transform: scale(0.9);
+    right: 10px;
+    bottom: 10px;
+  }
 
   i {
     font-size: 2em;
-  }
-
-  @media #{$medium} {
-    transform: scale(1)
   }
 }
 
 .btt-visible {
   visibility: visible;
-  opacity: 0.5;
+  opacity: 0.8;
+  @media #{$medium} {
+    opacity: 0.5;
+  }
 }
 
 .btt-visible:hover {
