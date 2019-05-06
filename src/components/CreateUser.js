@@ -118,7 +118,7 @@ export default class CreateUser extends React.Component {
         <h2 
           style={{display: !this.state.userAdded && 'none', textAlign: 'center', margin: '15px 0'}}
         >
-          User added successfully
+          User added successfully.
         </h2>
         <form
           className="add-user-form"

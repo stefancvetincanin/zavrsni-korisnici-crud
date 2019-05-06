@@ -165,13 +165,13 @@ export default class Modal extends Component {
               <div className="modal-form-columns">
                 <ModalLabels />
                 <div>
-                  <span>{capitalize(this.state.first)}</span>
-                  <span>{capitalize(this.state.last)}</span>
-                  <span>{this.state.date.substring(0, 10)}</span>
-                  <span>{capitalize(this.state.city)}</span>
-                  <span>{capitalize(this.state.state)}</span>
-                  <span>{this.state.email}</span>
-                  <span>{this.state.phone}</span>
+                  <span>{capitalize(this.state.first)}&nbsp;</span>
+                  <span>{capitalize(this.state.last)}&nbsp;</span>
+                  <span>{this.state.date.substring(0, 10)}&nbsp;</span>
+                  <span>{capitalize(this.state.city)}&nbsp;</span>
+                  <span>{capitalize(this.state.state)}&nbsp;</span>
+                  <span>{this.state.email}&nbsp;</span>
+                  <span>{this.state.phone}&nbsp;</span>
                 </div>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default class Modal extends Component {
                 <input type="text" name="state" value={this.state.state} onChange={this.handleChange} placeholder="State" required/>
                 <input type="text" className ="modal-email" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Email" 
                   pattern=".{1,}(@)\w{2,}\.\w{2,}" required/>
-                <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder="Phone" pattern="[\s\d-()]{6,16}" required/><br />
+                <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder="Phone" pattern=".{6,16}" required/><br />
                 <button>
                   Submit
                 </button>
