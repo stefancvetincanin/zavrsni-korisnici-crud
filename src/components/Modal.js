@@ -17,16 +17,20 @@ export default class Modal extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.user !== prevProps.user) {
-      this.setState({
-        first: this.props.user.name.first,
-        last: this.props.user.name.last,
-        date: this.props.user.dob.date,
-        city: this.props.user.location.city,
-        state: this.props.user.location.state,
-        phone: this.props.user.phone,
-        email: this.props.user.email
-      })
+      this.initializeFromProps()
     }
+  }
+
+  initializeFromProps = () => {
+    this.setState({
+      first: this.props.user.name.first,
+      last: this.props.user.name.last,
+      date: this.props.user.dob.date,
+      city: this.props.user.location.city,
+      state: this.props.user.location.state,
+      phone: this.props.user.phone,
+      email: this.props.user.email
+    })
   }
 
   // Delete functionality
@@ -99,8 +103,8 @@ export default class Modal extends Component {
         .then(response => response.json())
         .then(() => {
           this.props.editUser(editedUser, this.props.user.userId)
-          this.viewMode()
           this.props.isSendingData(false)
+          this.viewModeWithoutInit()
         })
         .catch(error => {
           this.props.isSendingData(false)
@@ -117,6 +121,13 @@ export default class Modal extends Component {
   }
 
   viewMode = () => {
+    this.setState({
+      editMode: false
+    })
+    this.initializeFromProps()
+  }
+
+  viewModeWithoutInit = () => {
     this.setState({
       editMode: false
     })
