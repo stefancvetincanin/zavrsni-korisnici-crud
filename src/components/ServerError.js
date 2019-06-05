@@ -11,7 +11,7 @@ export default function ServerError(props) {
             Close notification
         </button>
       </div>
-      <div className="mask app-mask"></div>
+      <div className="mask app-mask-pointer" onClick={() => props.hideServerError()}></div>
     </div>
   )
 }

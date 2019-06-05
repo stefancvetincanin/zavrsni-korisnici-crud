@@ -38,6 +38,11 @@
   z-index: 3;
 }
 
+.app-mask-pointer {
+  cursor: pointer;
+  z-index: 3;
+}
+
 .stop-scroll {
   height: 100%;
   overflow: hidden;

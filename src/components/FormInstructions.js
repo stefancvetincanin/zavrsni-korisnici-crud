@@ -15,7 +15,7 @@ export default function FormInstructions(props) {
             Close notification
         </button>
       </div>
-      <div className="mask app-mask"></div>
+      <div className="mask app-mask-pointer" onClick={() => props.hideInstructions(false)}></div>
     </div>
   )
 }
