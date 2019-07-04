@@ -1,9 +1,11 @@
 import React from 'react'
+import LoginInstructions from './LoginInstructions';
 
 export default class Login extends React.Component {
   state = {
     username: '', 
-    password: ''
+    password: '',
+    showInstructions: false
   }
 
   componentDidMount() {
@@ -57,12 +59,21 @@ export default class Login extends React.Component {
     }    
   }
 
+  showInstructions = status => {
+    this.setState({
+      showInstructions: status
+    })
+  }
+
   render() {
     return(
       <main className="container login-container">
         <form onSubmit={this.handleSubmit}
           style={{display: this.props.isLoggedIn && 'none'}}>
-          <h2>Login</h2>
+          <h2>
+            Login&nbsp;&nbsp;&nbsp;
+            <i className="fas fa-info-circle login-instructions-button" onClick={() => this.showInstructions(true)}></i>
+          </h2>
           <input 
             type="text" 
             placeholder="Username" 
@@ -88,6 +99,10 @@ export default class Login extends React.Component {
             Log out
           </button>
         </div>
+        <LoginInstructions 
+          showInstructions={this.state.showInstructions}
+          hideInstructions={this.showInstructions}
+        />
       </main>
     )
   }
