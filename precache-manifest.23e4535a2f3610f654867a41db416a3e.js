@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/zavrsni-korisnici-crud/static/js/runtime~main.3d64908d.js"
   },
   {
-    "revision": "8b31728e28d1ebe19337",
-    "url": "/zavrsni-korisnici-crud/static/js/main.dd7d0eab.chunk.js"
+    "revision": "28d37d452e7298d262ac",
+    "url": "/zavrsni-korisnici-crud/static/js/main.1c798ac5.chunk.js"
   },
   {
     "revision": "aa8fb623c057e30f347c",
     "url": "/zavrsni-korisnici-crud/static/js/2.30939728.chunk.js"
   },
   {
-    "revision": "8b31728e28d1ebe19337",
-    "url": "/zavrsni-korisnici-crud/static/css/main.fb9a7f44.chunk.css"
+    "revision": "28d37d452e7298d262ac",
+    "url": "/zavrsni-korisnici-crud/static/css/main.b0f3a086.chunk.css"
   },
   {
-    "revision": "253c211102d9ba8b6b13c826110cbefd",
+    "revision": "1e61b9446ad1ce6d63e427d170ee9469",
     "url": "/zavrsni-korisnici-crud/index.html"
   }
 ];
