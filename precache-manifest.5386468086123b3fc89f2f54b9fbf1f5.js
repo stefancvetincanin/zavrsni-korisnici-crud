@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/zavrsni-korisnici-crud/static/css/main.b0f3a086.chunk.css"
   },
   {
-    "revision": "1e61b9446ad1ce6d63e427d170ee9469",
+    "revision": "f3bdc565b089fa015cd829623de17b3b",
     "url": "/zavrsni-korisnici-crud/index.html"
   }
 ];
